@@ -24,18 +24,20 @@ public class Note {
     public Note() {
         Random rand = new Random();
         key = rand.nextInt(3);
-        nameNum = rand.nextInt(7);
+        nameNum = rand.nextInt(8);
         oct = rand.nextInt(3);
-        counts = rand.nextInt(3);
+        counts = rand.nextInt(4);
     }
 
-    public Note(int keyIn, int nameNumIn, int octIn, int countsIn){
+    public Note(int keyIn, int nameNumIn, int octIn, int countsIn) {
         key = keyIn;
         nameNum = nameNumIn;
         oct = octIn;
         counts = countsIn;
     }
 
-
-
+    @Override
+    public String toString() {
+        return nameNum + "";
     }
+}
