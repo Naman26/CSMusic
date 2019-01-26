@@ -11,6 +11,8 @@ import io.synople.csmusic.MainActivity
 
 import io.synople.csmusic.R
 import io.synople.csmusic.model.Block
+import io.synople.csmusic.model.IfBlock
+import io.synople.csmusic.model.MethodBlock
 import io.synople.csmusic.model.NoteBlock
 import kotlinx.android.synthetic.main.fragment_music.*
 import java.lang.Exception
@@ -39,9 +41,11 @@ class MusicFragment : Fragment() {
 
     fun play() {
 
-        
+        var blockList = Arrays.asList(IfBlock(), NoteBlock(), NoteBlock(0, 0, 0, 0))
+
 
         var noteBlock = NoteBlock(0, 5, 0, 0)
+
 
         var fileName = noteBlock.fileName
 
@@ -52,9 +56,6 @@ class MusicFragment : Fragment() {
         val mpintro = MediaPlayer.create(context, R.raw.c3i)
         mpintro.isLooping = false
         mpintro.start()
-
-
-
 
 
 //        val f = File("/Users/harnoor/Downloads/pianonotes/c3i.wav")
@@ -170,6 +171,11 @@ class MusicFragment : Fragment() {
             }
         }
     }
+}
+
+
+fun blockToNoteBlock() {
+
 }
 
 
