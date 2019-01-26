@@ -1,18 +1,39 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rlBlockIf"
     android:layout_width="20dp"
     android:layout_height="20dp"
-    android:layout_marginStart="3dp">
-
-    <ImageView
-        android:id="@+id/ivBlockIf"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#ffffff" />
+    android:layout_marginStart="3dp"
+    android:orientation="horizontal">
 
     <TextView
         android:id="@+id/tvBlockFor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
-</RelativeLayout>
+        android:text="if (" />
+
+    <Button
+        android:id="@+id/btnExpression"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=") " />
+
+    <Button
+        android:id="@+id/btnTaskA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" else " />
+
+    <Button
+        android:id="@+id/btnTaskB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
