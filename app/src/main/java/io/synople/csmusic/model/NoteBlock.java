@@ -5,19 +5,19 @@ import java.util.Random;
 public class NoteBlock extends Block {
 
     //Key of C
-    String[] keyC = {"C", "D", "E", "F", "G", "A", "B", "C"};
+    String[] keyC = {"c", "d", "e", "f", "g", "a", "b", "c"};
 
     //Key of D
-    String[] keyD = {"D", "E", "F#", "G", "A", "B", "C#", "D"};
+    String[] keyD = {"d", "e", "f#", "g", "a", "b", "c#", "d"}; //c#, f#
 
     //Key of G
-    String[] keyG = {"G", "A", "B", "C", "D", "E", "F#", "G"};
+    String[] keyG = {"g", "a", "b", "c", "d", "e", "f#", "g"}; // f#
 
     //all keys
     String[][] keys = {keyC, keyD, keyG};
 
     //all octaves
-    String[] octStrings = {"3", "4", "5"};
+    String[] octStrings = {"3", "4", "5", "6"};
 
     //all lengths
     String[] countStrings = {"i", "q", "h", "w"};
@@ -33,7 +33,7 @@ public class NoteBlock extends Block {
         key = rand.nextInt(3);
         nameNum = rand.nextInt(8);
         oct = rand.nextInt(3);
-        if (nameNum == 8) {
+        if (nameNum == 7) {
             oct++;
         }
         counts = rand.nextInt(4);
