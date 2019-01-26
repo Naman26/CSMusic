@@ -8,10 +8,10 @@ public class NoteBlock extends Block {
     String[] keyC = {"c", "d", "e", "f", "g", "a", "b", "c"};
 
     //Key of D
-    String[] keyD = {"d", "e", "f", "g", "a", "b", "c", "d"}; //c#, f#
+    String[] keyD = {"d", "e", "f#", "g", "a", "b", "c#", "d"}; //c#, f#
 
     //Key of G
-    String[] keyG = {"g", "a", "b", "c", "d", "e", "f", "g"}; // f#
+    String[] keyG = {"g", "a", "b", "c", "d", "e", "f#", "g"}; // f#
 
     //all keys
     String[][] keys = {keyC, keyD, keyG};
