@@ -1,14 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rlBlockFor"
-    android:layout_width="20dp"
-    android:layout_height="20dp"
-    android:layout_marginStart="3dp">
-
-    <ImageView
-        android:id="@+id/ivBlockFor"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#ffffff" />
+    android:layout_width="25dp"
+    android:layout_height="25dp"
+    android:layout_marginStart="3dp"
+    android:background="#ffffff">
 
     <TextView
         android:id="@+id/tvBlockFor"
