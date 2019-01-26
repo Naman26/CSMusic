@@ -4,6 +4,9 @@ import java.util.Random;
 
 public class NoteBlock extends Block {
 
+    //bool for if note is random
+    Boolean isRandom;
+
     //Key of C
     String[] keyC = {"c", "d", "e", "f", "g", "a", "b", "c"};
 
@@ -32,8 +35,8 @@ public class NoteBlock extends Block {
 
     //create a random note
     public NoteBlock() {
+        isRandom = true;
         Random rand = new Random();
-
         key = rand.nextInt(4);
 
         // if a rest is selected at random nameNum = "r" and oct = ""
@@ -50,10 +53,10 @@ public class NoteBlock extends Block {
         fileName = setFileName(key, nameNum, oct, counts);
     }
 
-
     // manually create a rest: @param keyIn must be 3, @param nameNumIn must be 0
     // rest note wav files have no octaves
     public NoteBlock(int keyIn, int countsIn) {
+        isRandom = false;
         key = keyIn;
         nameNum = 0;
         oct = 4;
@@ -63,6 +66,7 @@ public class NoteBlock extends Block {
 
     // manually create a played note: @ param keyIn must be in range 0-2 incl, @param nameNumIN must be in range 0-7 incl
     public NoteBlock(int keyIn, int nameNumIn, int octIn, int countsIn) {
+        isRandom = false;
         key = keyIn;
         nameNum = nameNumIn;
         oct = octIn;
