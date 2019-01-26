@@ -166,6 +166,19 @@ class MusicFragment : Fragment() {
             "b5h" -> return R.raw.b5h
             "b5w" -> return R.raw.b5w
 
+            "c#3i" -> return R.raw.cs3i
+            "c3q" -> return R.raw.c3q
+            "c3h" -> return R.raw.c3h
+            "c3w" -> return R.raw.c3w
+            "c4i" -> return R.raw.c4i
+            "c4q" -> return R.raw.c4i
+            "c4h" -> return R.raw.c4h
+            "c4w" -> return R.raw.c4w
+            "c5i" -> return R.raw.c5i
+            "c5q" -> return R.raw.c5q
+            "c5h" -> return R.raw.c5h
+            "c5w" -> return R.raw.c5w
+
             else -> { // Note the block
                 throw Exception("No file found")
             }
