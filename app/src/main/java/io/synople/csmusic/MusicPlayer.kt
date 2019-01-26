@@ -153,7 +153,7 @@ class MusicPlayer(private var context: Context) : MediaPlayer.OnCompletionListen
             "f#5w" -> return R.raw.fs5w
 
             else -> { // Note the block
-                throw Exception("No file found")
+                throw Exception("No file found: $str")
             }
         }
     }
