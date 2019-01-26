@@ -11,10 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import io.synople.csmusic.fragments.PlusOneFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-data class Item(val title: String, val code: String)
-
-
-
 class MainActivity : AppCompatActivity() {
 
 
@@ -25,12 +21,7 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.mainFrameLayout, PlusOneFragment.newInstance())
-            .commit();
-
-            }
-
-
-
-
+            .commit()
+    }
 }
 

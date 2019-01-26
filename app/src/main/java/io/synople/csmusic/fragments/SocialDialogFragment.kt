@@ -12,7 +12,10 @@ import androidx.recyclerview.widget.RecyclerView
 
 import io.synople.csmusic.R
 import io.synople.csmusic.adapters.ProfileViewAdapter
+import io.synople.csmusic.model.NoteBlock
+import io.synople.csmusic.model.Profile
 import kotlinx.android.synthetic.main.fragment_social_dialog.*
+import java.util.*
 
 
 class SocialDialogFragment : DialogFragment() {
@@ -28,17 +31,29 @@ class SocialDialogFragment : DialogFragment() {
         profileList = mutableListOf()
         prepareData()
 
-        val adapter = ProfileViewAdapter(profileList)
+        val adapter = ProfileViewAdapter(profileList, onPlayClick = {
 
+        }, onDownloadClick = {
+
+        })
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)
-
-        Toast.makeText(context, "Hello World", Toast.LENGTH_LONG).show()
-
     }
 
     fun prepareData() {
-        var item = Profile("Harnoor")
+        var item = Profile("Harnoor", Arrays.asList( NoteBlock(0, 4, 0, 0),
+            NoteBlock(0, 1, 1, 0),
+            NoteBlock(3,0),
+            NoteBlock(0, 6, 1, 0),
+            NoteBlock(0, 5, 1, 0),
+            NoteBlock(3,1),
+            NoteBlock(0, 6, 1, 0),
+            NoteBlock(0, 1, 1, 0),
+            NoteBlock(3,2),
+            NoteBlock(0, 6, 1, 0),
+            NoteBlock(0, 1, 1, 0),
+            NoteBlock(3,3)
+        ))
         profileList.add(item)
         item = Profile("Jason")
         profileList.add(item)
@@ -55,4 +70,3 @@ class SocialDialogFragment : DialogFragment() {
     }
 }
 
-data class Profile(var studentName: String)
