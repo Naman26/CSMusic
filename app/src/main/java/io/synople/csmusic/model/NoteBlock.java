@@ -55,6 +55,9 @@ public class NoteBlock extends Block {
 
     public String setFileName(int keyIn, int nameNumIn, int octIn, int countsIn) {
         return keys[keyIn][nameNumIn] + octStrings[octIn] + countStrings[countsIn];
+    }
 
+    public String toString() {
+        return "" + keys[key][nameNum] + "" + octStrings[oct] + "" + countStrings[counts];
     }
 }

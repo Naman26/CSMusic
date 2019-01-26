@@ -16,6 +16,9 @@ import com.google.ar.sceneform.ux.TransformableNode
 
 import io.synople.csmusic.R
 import io.synople.csmusic.adapters.BlockAdapter
+import io.synople.csmusic.model.Block
+import io.synople.csmusic.model.ForBlock
+import io.synople.csmusic.model.IfBlock
 import io.synople.csmusic.model.NoteBlock
 import kotlinx.android.synthetic.main.fragment_main.*
 
@@ -39,12 +42,14 @@ class MainFragment : Fragment() {
                 .setView(context, R.layout.renderable_block)
                 .build()
                 .thenAccept { renderable ->
+
+
                     val transformableNode = TransformableNode(arFragment.transformationSystem)
                     transformableNode.setParent(anchorNode)
                     transformableNode.renderable = renderable
 
                     val rvBlocks = renderable?.view?.findViewById<RecyclerView>(R.id.rvBlocks)
-                    val notes = mutableListOf<NoteBlock>()
+                    val notes = mutableListOf<Block>()
                     notes.add(NoteBlock())
                     val adapter = BlockAdapter(notes) {
                         print(it.toString())
@@ -54,6 +59,15 @@ class MainFragment : Fragment() {
 
                     renderable?.view?.findViewById<Button>(R.id.btnAddNote)?.setOnClickListener {
                         notes.add(NoteBlock())
+                        adapter.notifyDataSetChanged()
+                    }
+
+                    renderable?.view?.findViewById<Button>(R.id.btnAddFor)?.setOnClickListener {
+                        notes.add(ForBlock())
+                        adapter.notifyDataSetChanged()
+                    }
+                    renderable?.view?.findViewById<Button>(R.id.btnAddIf)?.setOnClickListener {
+                        notes.add(IfBlock())
                         adapter.notifyDataSetChanged()
                     }
                 }
