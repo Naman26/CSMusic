@@ -13,6 +13,7 @@ import com.google.ar.sceneform.AnchorNode
 import com.google.ar.sceneform.rendering.ViewRenderable
 import com.google.ar.sceneform.ux.ArFragment
 import com.google.ar.sceneform.ux.TransformableNode
+import io.synople.csmusic.MusicPlayer
 
 import io.synople.csmusic.R
 import io.synople.csmusic.adapters.BlockAdapter
@@ -25,12 +26,15 @@ import kotlinx.android.synthetic.main.fragment_main.*
 class MainFragment : Fragment() {
 
     private lateinit var arFragment: ArFragment
+    private lateinit var adapters: MutableList<BlockAdapter>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
         inflater.inflate(R.layout.fragment_main, container, false)!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        adapters = mutableListOf()
 
         arFragment = (childFragmentManager.findFragmentById(R.id.uxFragment) as ArFragment)
         arFragment.setOnTapArPlaneListener { hitResult, plane, motionEvent ->
@@ -54,6 +58,7 @@ class MainFragment : Fragment() {
                     val adapter = BlockAdapter(notes) {
                         print(it.toString())
                     }
+                    adapters.add(adapter)
                     rvBlocks?.adapter = adapter
                     rvBlocks?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
@@ -74,9 +79,12 @@ class MainFragment : Fragment() {
         }
 
         ivPlay.setOnClickListener {
-            val mpintro = MediaPlayer.create(context, R.raw.c4i)
-            mpintro.isLooping = false
-            mpintro.start()
+            val musicPlayer = MusicPlayer(context!!)
+            val p = mutableListOf<NoteBlock>()
+            adapters[0].blocks.forEach {
+                p.add(it as NoteBlock)
+            }
+            musicPlayer.play(p)
         }
     }
 
