@@ -50,18 +50,22 @@ public class MusicCompiler {
 
 
 
-    public void addNoteBlockToNotes(NoteBlock blockIn){
+    public void addNoteBlockToNotes(NoteBlock bIn){
         ArrayList<NoteBlock> arr = new ArrayList<>();
-        arr.add((NoteBlock) blockIn);
+        arr.add((NoteBlock) bIn);
         notes.add(arr);
     }
 
-    public void addIfBlocktoNotes(IfBlock blockIn){
+    public void addIfBlocktoNotes(IfBlock blockIn) {
+        if (blockIn.getExpr().equals("CHORD") || blockIn.getExpr().equals("RANDOM")) {
+            notes.add(blockIn.getNoteBlocks());
+        }
+    }
+
+    public void addForBlocktoNotes(ForBlock blockIn) {
 
     }
-    public void addForBlocktoNotes(ForBlock blockIn){
-
-    }
+    
     public void addMethodBlocktoNotes(MethodBlock blockIn){
 
     }

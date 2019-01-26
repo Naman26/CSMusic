@@ -5,7 +5,7 @@ import java.util.List;
 
 public class IfBlock extends Block {
     // TODO: Make this selectable enum (e.g. previous note was high. etc.)
-    String[] expression = {"CHORD", "MODULATION"};
+    String[] expression = {"CHORD", "RANDOM"};
     String expr;
 
     public List<NoteBlock> list;
@@ -26,12 +26,15 @@ public class IfBlock extends Block {
             list = listIn;
             if (list.get(0).isRandom) {
                 expr = expression[1];
-
             }
         }
     }
 
     public String getExpr() {
         return expr;
+    }
+
+    public List<NoteBlock> getNoteBlocks(){
+        return list;
     }
 }
