@@ -35,12 +35,16 @@ class MusicFragment : Fragment() {
             val noteBlockList = Arrays.asList(
                 NoteBlock(0, 4, 0, 0),
                 NoteBlock(0, 1, 1, 0),
+                NoteBlock(3,0),
                 NoteBlock(0, 6, 1, 0),
                 NoteBlock(0, 5, 1, 0),
+                NoteBlock(3,1),
                 NoteBlock(0, 6, 1, 0),
                 NoteBlock(0, 1, 1, 0),
+                NoteBlock(3,2),
                 NoteBlock(0, 6, 1, 0),
-                NoteBlock(0, 1, 1, 0)
+                NoteBlock(0, 1, 1, 0),
+                NoteBlock(3,3)
             )
 
             val player = MusicPlayer(context!!)

@@ -52,7 +52,7 @@ public class NoteBlock extends Block {
     }
 
 
-    // manually create a rest: @param keyIn must be 3, @param nameNumIn must be 0
+    // manually create a rest: @param keyIn must be 3
     // rest note wav files have no octaves
     public NoteBlock(int keyIn, int countsIn) {
         key = keyIn;
