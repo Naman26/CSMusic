@@ -17,7 +17,7 @@ public class NoteBlock extends Block {
     String[][] keys = {keyC, keyD, keyG};
 
     //all octaves
-    String[] octStrings = {"3", "4", "5", "6"};
+    String[] octStrings = {"3", "4", "5"};
 
     //all lengths
     String[] countStrings = {"i", "q", "h", "w"};
