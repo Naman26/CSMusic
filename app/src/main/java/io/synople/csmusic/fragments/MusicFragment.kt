@@ -7,9 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import io.synople.csmusic.MainActivity
 
 import io.synople.csmusic.R
+import io.synople.csmusic.model.NoteBlock
 import kotlinx.android.synthetic.main.fragment_music.*
+import java.lang.Exception
 
 
 class MusicFragment : Fragment() {
@@ -33,11 +36,18 @@ class MusicFragment : Fragment() {
     }
 
     fun play() {
+        var noteBlock = NoteBlock(0, 0, 0, 0)
+
+        var fileName = noteBlock.fileName
+
+        Toast.makeText(context, "File Name: " + fileName, Toast.LENGTH_LONG).show()
 
 
         val mpintro = MediaPlayer.create(context, R.raw.c3i)
         mpintro.isLooping = false
         mpintro.start()
+
+        val resID = resources.getIdentifier(fileName, "id",)
 
 
 //        val f = File("/Users/harnoor/Downloads/pianonotes/c3i.wav")
@@ -51,5 +61,68 @@ class MusicFragment : Fragment() {
 //            prepare()
 //            start()
 //        }
+    }
+
+    fun stringToResId(str: String): Int {
+        when (str) {
+            "c3i" -> return R.raw.c3i
+            "c3q" -> return R.raw.c3q
+            "c3h" -> return R.raw.c3h
+            "c3w" -> return R.raw.c3w
+            "c4i" -> return R.raw.c4i
+            "c4q" -> return R.raw.c4i
+            "c4h" -> return R.raw.c4h
+            "c4w" -> return R.raw.c4w
+            "c5i" -> return R.raw.c5i
+            "c5q" -> return R.raw.c5q
+            "c5h" -> return R.raw.c5h
+            "c5w" -> return R.raw.c5w
+
+            "d3i" -> return R.raw.d3i
+            "d3q" -> return R.raw.d3q
+            "d3h" -> return R.raw.d3h
+            "d3w" -> return R.raw.d3w
+            "d4i" -> return R.raw.d4i
+            "d4q" -> return R.raw.d4i
+            "d4h" -> return R.raw.d4h
+            "d4w" -> return R.raw.d4w
+            "d5i" -> return R.raw.d5i
+            "d5q" -> return R.raw.d5q
+            "d5h" -> return R.raw.d5h
+            "d5w" -> return R.raw.d5w
+
+            "e3i" -> return R.raw.e3i
+            "e3q" -> return R.raw.e3q
+            "e3h" -> return R.raw.e3h
+            "e3w" -> return R.raw.e3w
+            "e4i" -> return R.raw.e4i
+            "e4q" -> return R.raw.e4i
+            "e4h" -> return R.raw.e4h
+            "e4w" -> return R.raw.e4w
+            "e5i" -> return R.raw.e5i
+            "e5q" -> return R.raw.e5q
+            "e5h" -> return R.raw.e5h
+            "e5w" -> return R.raw.e5w
+
+            "f3i" -> return R.raw.f3i
+            "f3q" -> return R.raw.f3q
+            "f3h" -> return R.raw.f3h
+            "f3w" -> return R.raw.f3w
+            "f4i" -> return R.raw.f4i
+            "f4q" -> return R.raw.f4i
+            "f4h" -> return R.raw.f4h
+            "f4w" -> return R.raw.f4w
+            "f5i" -> return R.raw.f5i
+            "f5q" -> return R.raw.f5q
+            "f5h" -> return R.raw.f5h
+            "f5w" -> return R.raw.f5w
+
+
+
+
+            else -> { // Note the block
+                throw Exception("No file found")
+            }
+        }
     }
 }
