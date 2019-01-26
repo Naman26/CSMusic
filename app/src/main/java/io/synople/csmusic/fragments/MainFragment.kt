@@ -55,7 +55,7 @@ class MainFragment : Fragment() {
 
                     val rvBlocks = renderable?.view?.findViewById<RecyclerView>(R.id.rvBlocks)
                     val notes = mutableListOf<Block>()
-                    notes.add(Block())
+                    notes.add(NoteBlock())
                     val adapter = BlockAdapter(notes) {
                         print(it.toString())
                     }

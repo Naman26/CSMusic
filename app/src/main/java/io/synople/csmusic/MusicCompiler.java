@@ -15,12 +15,13 @@ public class MusicCompiler {
     int totalCounts;
 
     public MusicCompiler() {
-        blocks = new ArrayList<Block>();
+        this(new ArrayList<>());
     }
 
     //
     public MusicCompiler(List<Block> blocksIn) {
         blocks = blocksIn;
+        notes = new ArrayList<>();
     }
 
     public void addBlock(Block b) {
