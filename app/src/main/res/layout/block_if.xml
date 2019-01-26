@@ -1,8 +1,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rlBlockIf"
-    android:layout_width="25dp"
+    android:layout_width="wrap_content"
     android:layout_height="25dp"
+    android:layout_gravity="center_vertical"
     android:layout_marginStart="3dp"
+    android:background="#ffffff"
     android:orientation="horizontal">
 
     <TextView
@@ -12,7 +14,7 @@
 
     <Button
         android:id="@+id/btnExpression"
-        android:layout_width="wrap_content"
+        android:layout_width="20dp"
         android:layout_height="wrap_content" />
 
     <TextView
@@ -22,7 +24,7 @@
 
     <Button
         android:id="@+id/btnTaskA"
-        android:layout_width="wrap_content"
+        android:layout_width="20dp"
         android:layout_height="wrap_content" />
 
     <TextView
@@ -32,7 +34,7 @@
 
     <Button
         android:id="@+id/btnTaskB"
-        android:layout_width="wrap_content"
+        android:layout_width="20dp"
         android:layout_height="wrap_content" />
 
 </LinearLayout>
