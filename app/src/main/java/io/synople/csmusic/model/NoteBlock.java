@@ -1,8 +1,8 @@
-package io.synople.csmusic.utilities;
+package io.synople.csmusic.model;
 
 import java.util.Random;
 
-public class Note {
+public class NoteBlock extends Block {
 
     //Key of C
     String[] keyC = {"C", "D", "E", "F", "G", "A", "B", "C"};
@@ -28,19 +28,19 @@ public class Note {
     private String fileName;
     private final String wav = ".wav";
 
-    public Note() {
+    public NoteBlock() {
         Random rand = new Random();
         key = rand.nextInt(3);
         nameNum = rand.nextInt(8);
         oct = rand.nextInt(3);
-        if (nameNum == 8){
+        if (nameNum == 8) {
             oct++;
         }
         counts = rand.nextInt(4);
         fileName = setFileName(key, nameNum, oct, counts);
     }
 
-    public Note(int keyIn, int nameNumIn, int octIn, int countsIn) {
+    public NoteBlock(int keyIn, int nameNumIn, int octIn, int countsIn) {
         key = keyIn;
         nameNum = nameNumIn;
         oct = octIn;
@@ -49,7 +49,7 @@ public class Note {
 
     }
 
-    public String getFileName(){
+    public String getFileName() {
         return fileName;
     }
 

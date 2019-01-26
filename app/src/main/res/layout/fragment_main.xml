@@ -14,12 +14,12 @@
         android:focusable="false"
         android:tag="UxFragment" />
 
-    <Button
-        android:id="@+id/btnPlay"
+    <ImageView
+        android:id="@+id/ivPlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Play" />
+        android:src="@drawable/play" />
 
 </RelativeLayout>

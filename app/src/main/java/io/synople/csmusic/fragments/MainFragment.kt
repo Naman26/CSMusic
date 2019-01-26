@@ -15,7 +15,7 @@ import com.google.ar.sceneform.ux.TransformableNode
 
 import io.synople.csmusic.R
 import io.synople.csmusic.adapters.BlockAdapter
-import io.synople.csmusic.utilities.Note
+import io.synople.csmusic.model.NoteBlock
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment() {
@@ -43,17 +43,16 @@ class MainFragment : Fragment() {
                     transformableNode.renderable = renderable
 
                     val rvBlocks = renderable?.view?.findViewById<RecyclerView>(R.id.rvBlocks)
-                    val notes = mutableListOf<Note>()
-                    notes.add(Note())
+                    val notes = mutableListOf<NoteBlock>()
+                    notes.add(NoteBlock())
                     val adapter = BlockAdapter(notes) {
-                        print (it.toString())
+                        print(it.toString())
                     }
                     rvBlocks?.adapter = adapter
                     rvBlocks?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
                     renderable?.view?.findViewById<Button>(R.id.btnAddNote)?.setOnClickListener {
-                        // TODO: Add another block
-                        notes.add(Note())
+                        notes.add(NoteBlock())
                         adapter.notifyDataSetChanged()
                     }
                 }

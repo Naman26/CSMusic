@@ -5,18 +5,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import io.synople.csmusic.R
-import io.synople.csmusic.utilities.Note
+import io.synople.csmusic.model.NoteBlock
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.block_note.*
 
-class BlockAdapter(val blocks: List<Note>, private val itemClick: (Note) -> Unit) :
+class BlockAdapter(val blocks: List<NoteBlock>, private val itemClick: (NoteBlock) -> Unit) :
     RecyclerView.Adapter<BlockAdapter.ViewHolder>() {
 
-    class ViewHolder(override val containerView: View, private val itemClick: (Note) -> Unit) :
+    class ViewHolder(override val containerView: View, private val itemClick: (NoteBlock) -> Unit) :
         RecyclerView.ViewHolder(containerView), LayoutContainer {
 
-        fun bindNote(note: Note) {
-            tvBlockNote.text = note.toString()
+        fun bindNote(noteBlock: NoteBlock) {
+            tvBlockNote.text = noteBlock.toString()
         }
     }
 
