@@ -110,7 +110,7 @@ class MusicPlayer(private var context: Context) : MediaPlayer.OnCompletionListen
             "g6q" -> return R.raw.g6q
             "g6h" -> return R.raw.g6h
             "g6w" -> return R.raw.g6w
-            
+
             "a3i" -> return R.raw.a3i
             "a3q" -> return R.raw.a3q
             "a3h" -> return R.raw.a3h
