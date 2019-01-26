@@ -1,5 +1,6 @@
 package io.synople.csmusic.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class IfBlock extends Block {
@@ -9,15 +10,19 @@ public class IfBlock extends Block {
 
     public List<NoteBlock> list;
 
+    public IfBlock() {
+        list = new ArrayList<>();
+    }
+
     public IfBlock(List<NoteBlock> listIn) {
         // if statement followed by a chord
-        if (list.size() == 3){
+        if (list.size() == 3) {
             list = listIn;
             expr = expression[0];
         }
 
         // if statement followed by a rando
-        if (list.size() == 1){
+        if (list.size() == 1) {
             list = listIn;
             if (list.get(0).isRandom) {
                 expr = expression[1];
@@ -26,7 +31,7 @@ public class IfBlock extends Block {
         }
     }
 
-    public String getExpr(){
+    public String getExpr() {
         return expr;
     }
 }

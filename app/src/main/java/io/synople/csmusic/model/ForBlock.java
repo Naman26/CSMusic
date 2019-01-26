@@ -1,5 +1,6 @@
 package io.synople.csmusic.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ForBlock extends Block {
@@ -7,21 +8,26 @@ public class ForBlock extends Block {
     public List<NoteBlock> noteBlocks;
     public MethodBlock method;
 
-    public ForBlock(int loopsIn, List<NoteBlock> noteBlocksIn){
+    public ForBlock() {
+        loops = 2;
+        noteBlocks = new ArrayList<>();
+    }
+
+    public ForBlock(int loopsIn, List<NoteBlock> noteBlocksIn) {
         loops = loopsIn;
         noteBlocks = noteBlocksIn;
     }
 
-    public ForBlock(int loopsIn, MethodBlock methodIn){
+    public ForBlock(int loopsIn, MethodBlock methodIn) {
         loops = loopsIn;
         method = methodIn;
     }
 
-    public int getLoops(){
+    public int getLoops() {
         return loops;
     }
 
-    public void setLoops(int n){
+    public void setLoops(int n) {
         loops = n;
     }
 

@@ -49,7 +49,7 @@ class BlockAdapter(val blocks: List<Block>, private val itemClick: (Block) -> Un
         }
 
         fun bindMethod(methodBlock: MethodBlock) {
-            tvBlockMethod.text = "M" + methodBlock.method
+            tvBlockMethod.text = "M${methodBlock.methodNum}"
         }
     }
 

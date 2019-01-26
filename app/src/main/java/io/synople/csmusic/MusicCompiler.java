@@ -14,23 +14,23 @@ public class MusicCompiler {
     List<NoteBlock> notes;
     int totalCounts;
 
-    public MusicCompiler(){
+    public MusicCompiler() {
         blocks = new ArrayList<Block>();
     }
 
     //
-    public MusicCompiler(List<Block> blocksIn){
-       blocks = blocksIn;
+    public MusicCompiler(List<Block> blocksIn) {
+        blocks = blocksIn;
     }
 
-    public void addBlock(Block b){
+    public void addBlock(Block b) {
         blocks.add(b);
     }
 
     public List<NoteBlock> compile() {
-        for (int i = 0; i < blocks.size(); i++){
+        for (int i = 0; i < blocks.size(); i++) {
             Block b = blocks.get(i);
-            if (b instanceof NoteBlock){
+            if (b instanceof NoteBlock) {
                 notes.add((NoteBlock) b);
             }
         }
