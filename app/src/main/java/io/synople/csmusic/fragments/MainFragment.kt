@@ -1,5 +1,6 @@
 package io.synople.csmusic.fragments
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -59,7 +60,9 @@ class MainFragment : Fragment() {
         }
 
         ivPlay.setOnClickListener {
-            // TODO: Harnoor
+            val mpintro = MediaPlayer.create(context, R.raw.c4i)
+            mpintro.isLooping = false
+            mpintro.start()
         }
     }
 
