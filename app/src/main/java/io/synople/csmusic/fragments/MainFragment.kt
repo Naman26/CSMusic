@@ -1,6 +1,5 @@
 package io.synople.csmusic.fragments
 
-import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,6 +17,9 @@ import io.synople.csmusic.MusicPlayer
 
 import io.synople.csmusic.R
 import io.synople.csmusic.adapters.BlockAdapter
+import io.synople.csmusic.fragments.pickerdialogfragments.ForPickerDialogFragment
+import io.synople.csmusic.fragments.pickerdialogfragments.IfPickerDialogFragment
+import io.synople.csmusic.fragments.pickerdialogfragments.NotePickerDialogFragment
 import io.synople.csmusic.model.Block
 import io.synople.csmusic.model.ForBlock
 import io.synople.csmusic.model.IfBlock
@@ -64,17 +66,24 @@ class MainFragment : Fragment() {
                     rvBlocks?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
                     renderable?.view?.findViewById<Button>(R.id.btnAddNote)?.setOnClickListener {
-                        notes.add(NoteBlock())
-                        adapter.notifyDataSetChanged()
+                        NotePickerDialogFragment.newInstance().show(fragmentManager!!) {
+                            notes.add(it)
+                            adapter.notifyDataSetChanged()
+                        }
                     }
 
                     renderable?.view?.findViewById<Button>(R.id.btnAddFor)?.setOnClickListener {
-                        notes.add(ForBlock())
-                        adapter.notifyDataSetChanged()
+                        ForPickerDialogFragment.newInstance().show(fragmentManager!!) {
+                            notes.add(it)
+                            adapter.notifyDataSetChanged()
+                        }
                     }
+
                     renderable?.view?.findViewById<Button>(R.id.btnAddIf)?.setOnClickListener {
-                        notes.add(IfBlock())
-                        adapter.notifyDataSetChanged()
+                        IfPickerDialogFragment.newInstance().show(fragmentManager!!) {
+                            notes.add(it)
+                            adapter.notifyDataSetChanged()
+                        }
                     }
                 }
         }

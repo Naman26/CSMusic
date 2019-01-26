@@ -1,4 +1,4 @@
-package io.synople.csmusic.fragments
+package io.synople.csmusic.fragments.pickerdialogfragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,40 +7,36 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import io.synople.csmusic.R
-import kotlinx.android.synthetic.main.fragment_note_picker_dialog.*
+import io.synople.csmusic.model.NoteBlock
+import kotlinx.android.synthetic.main.dialog_fragment_for_picker.*
 
+class ForPickerDialogFragment : DialogFragment() {
 
-class NotePickerDialogFragment : DialogFragment() {
+    private lateinit var onFinish: (NoteBlock) -> Unit
 
-    private lateinit var onFinish: (String) -> Unit
-
-    private lateinit var data: String
-
-    fun show(fm: FragmentManager, tag: String, data: String, onFinish: (String) -> Unit) {
+    fun show(fm: FragmentManager, onFinish: (NoteBlock) -> Unit) {
         this.onFinish = onFinish
-        this.data = data
-        show(fm, tag)
+        show(fm, "ForPickerDialogFragment")
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
-        inflater.inflate(R.layout.fragment_note_picker_dialog, container, false)!!
+        inflater.inflate(R.layout.dialog_fragment_for_picker, container, false)!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        tvNote.text = data
 
         btnAdd.setOnClickListener {
-            data += "world"
-            tvNote.text = data
             Thread.sleep(1000)
-            onFinish(data)
+            onFinish(NoteBlock())
             dismiss()
         }
     }
 
     companion object {
         @JvmStatic
-        fun newInstance() = NotePickerDialogFragment()
+        fun newInstance() = ForPickerDialogFragment()
     }
 }
+
+
