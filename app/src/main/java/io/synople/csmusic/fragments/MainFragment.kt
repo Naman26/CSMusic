@@ -13,6 +13,7 @@ import com.google.ar.sceneform.AnchorNode
 import com.google.ar.sceneform.rendering.ViewRenderable
 import com.google.ar.sceneform.ux.ArFragment
 import com.google.ar.sceneform.ux.TransformableNode
+import io.synople.csmusic.MusicCompiler
 import io.synople.csmusic.MusicPlayer
 
 import io.synople.csmusic.R
@@ -80,10 +81,7 @@ class MainFragment : Fragment() {
 
         ivPlay.setOnClickListener {
             val musicPlayer = MusicPlayer(context!!)
-            val p = mutableListOf<NoteBlock>()
-            adapters[0].blocks.forEach {
-                p.add(it as NoteBlock)
-            }
+            val p = MusicCompiler(adapters[0].blocks).compile()
             musicPlayer.play(p)
         }
     }
