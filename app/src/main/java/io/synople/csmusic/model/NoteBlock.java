@@ -17,7 +17,7 @@ public class NoteBlock extends Block {
     String[][] keys = {keyC, keyD, keyG};
 
     //all octaves
-    String[] octStrings = {"3", "4", "5"};
+    String[] octStrings = {"3", "4", "5", "6"};
 
     //all lengths
     String[] countStrings = {"i", "q", "h", "w"};
@@ -33,7 +33,7 @@ public class NoteBlock extends Block {
         key = rand.nextInt(3);
         nameNum = rand.nextInt(8);
         oct = rand.nextInt(3);
-        if (nameNum == 8) {
+        if (nameNum == 7) {
             oct++;
         }
         counts = rand.nextInt(4);
