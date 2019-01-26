@@ -58,7 +58,7 @@ class MainFragment : Fragment() {
                 }
         }
 
-        btnPlay.setOnClickListener {
+        ivPlay.setOnClickListener {
             // TODO: Harnoor
         }
     }
