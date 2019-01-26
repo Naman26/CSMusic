@@ -40,7 +40,7 @@ public class Note {
         fileName = setFileName(key, nameNum, oct, counts);
     }
 
-    public Note(int keyIn, int nameNumIn, int octIn, int countsIn){
+    public Note(int keyIn, int nameNumIn, int octIn, int countsIn) {
         key = keyIn;
         nameNum = nameNumIn;
         oct = octIn;
