@@ -33,6 +33,8 @@ class MusicFragment : Fragment() {
     }
 
     fun play() {
+
+
         val mpintro = MediaPlayer.create(context, R.raw.c3i)
         mpintro.isLooping = false
         mpintro.start()
