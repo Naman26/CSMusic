@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import io.synople.csmusic.MusicPlayer
 
 import io.synople.csmusic.R
 import io.synople.csmusic.adapters.ProfileViewAdapter
@@ -32,6 +33,8 @@ class SocialDialogFragment : DialogFragment() {
         prepareData()
 
         val adapter = ProfileViewAdapter(profileList, onPlayClick = {
+            val player = MusicPlayer(context!!)
+            player.play(it.music)
 
         }, onDownloadClick = {
 
@@ -55,11 +58,47 @@ class SocialDialogFragment : DialogFragment() {
             NoteBlock(3,3)
         ))
         profileList.add(item)
-        item = Profile("Jason")
+        item = Profile("Jason",  Arrays.asList( NoteBlock(0, 4, 0, 0),
+            NoteBlock(0, 1, 1, 0),
+            NoteBlock(3,0),
+            NoteBlock(0, 6, 1, 0),
+            NoteBlock(0, 5, 1, 0),
+            NoteBlock(3,1),
+            NoteBlock(0, 6, 1, 0),
+            NoteBlock(0, 1, 1, 0),
+            NoteBlock(3,2),
+            NoteBlock(0, 6, 1, 0),
+            NoteBlock(0, 1, 1, 0),
+            NoteBlock(3,3)
+        ))
         profileList.add(item)
-        item = Profile("Carl")
+        item = Profile("Carl",  Arrays.asList( NoteBlock(0, 4, 0, 0),
+            NoteBlock(0, 1, 1, 0),
+            NoteBlock(3,0),
+            NoteBlock(0, 6, 1, 0),
+            NoteBlock(0, 5, 1, 0),
+            NoteBlock(3,1),
+            NoteBlock(0, 6, 1, 0),
+            NoteBlock(0, 1, 1, 0),
+            NoteBlock(3,2),
+            NoteBlock(0, 6, 1, 0),
+            NoteBlock(0, 1, 1, 0),
+            NoteBlock(3,3)
+        ))
         profileList.add(item)
-        item = Profile("Naman")
+        item = Profile("Naman", Arrays.asList( NoteBlock(0, 4, 0, 0),
+            NoteBlock(0, 1, 1, 0),
+            NoteBlock(3,0),
+            NoteBlock(0, 6, 1, 0),
+            NoteBlock(0, 5, 1, 0),
+            NoteBlock(3,1),
+            NoteBlock(0, 6, 1, 0),
+            NoteBlock(0, 1, 1, 0),
+            NoteBlock(3,2),
+            NoteBlock(0, 6, 1, 0),
+            NoteBlock(0, 1, 1, 0),
+            NoteBlock(3,3)
+        ))
         profileList.add(item)
     }
 
