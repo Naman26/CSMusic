@@ -40,8 +40,7 @@ public class NoteBlock extends Block {
         if (key == 3) {
             nameNum = 0;
             oct = 4;
-        }
-        else {
+        } else {
             nameNum = rand.nextInt(8);
             oct = rand.nextInt(3);
             if (nameNum == 7) oct++;
@@ -73,7 +72,7 @@ public class NoteBlock extends Block {
     }
 
     // getter method for file name
-    public String getFileName(){
+    public String getFileName() {
         return fileName;
     }
 

@@ -1,8 +1,8 @@
 package io.synople.csmusic.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ForBlock extends Block {
     public int loops;
-    public ArrayList<NoteBlock> noteBlocks;
+    public List<NoteBlock> noteBlocks;
 }
