@@ -46,6 +46,10 @@ class MusicPlayer(private var context: Context) : MediaPlayer.OnCompletionListen
             "c5q" -> return R.raw.c5q
             "c5h" -> return R.raw.c5h
             "c5w" -> return R.raw.c5w
+            "c6i" -> return R.raw.c6i
+            "c6q" -> return R.raw.c6q
+            "c6h" -> return R.raw.c6h
+            "c6w" -> return R.raw.c6w
 
             "d3i" -> return R.raw.d3i
             "d3q" -> return R.raw.d3q
@@ -59,6 +63,10 @@ class MusicPlayer(private var context: Context) : MediaPlayer.OnCompletionListen
             "d5q" -> return R.raw.d5q
             "d5h" -> return R.raw.d5h
             "d5w" -> return R.raw.d5w
+            "d6i" -> return R.raw.d6i
+            "d6q" -> return R.raw.d6q
+            "d6h" -> return R.raw.d6h
+            "d6w" -> return R.raw.d6w
 
             "e3i" -> return R.raw.e3i
             "e3q" -> return R.raw.e3q
@@ -98,7 +106,10 @@ class MusicPlayer(private var context: Context) : MediaPlayer.OnCompletionListen
             "g5q" -> return R.raw.g5q
             "g5h" -> return R.raw.g5h
             "g5w" -> return R.raw.g5w
-
+            "g6i" -> return R.raw.g6i
+            "g6q" -> return R.raw.g6q
+            "g6h" -> return R.raw.g6h
+            "g6w" -> return R.raw.g6w
 
             "a3i" -> return R.raw.a3i
             "a3q" -> return R.raw.a3q
@@ -151,6 +162,11 @@ class MusicPlayer(private var context: Context) : MediaPlayer.OnCompletionListen
             "f#5q" -> return R.raw.fs5q
             "f#5h" -> return R.raw.fs5h
             "f#5w" -> return R.raw.fs5w
+
+            "rw" -> return R.raw.rw
+            "rh" -> return R.raw.rh
+            "rq" -> return R.raw.rq
+            "ri" -> return R.raw.ri
 
             else -> { // Note the block
                 throw Exception("No file found: $str")

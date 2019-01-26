@@ -3,6 +3,7 @@ package io.synople.csmusic.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.synople.csmusic.R
 import io.synople.csmusic.model.*
@@ -28,11 +29,23 @@ class BlockAdapter(val blocks: List<Block>, private val itemClick: (Block) -> Un
         }
 
         fun bindFor(forBlock: ForBlock) {
-            tvBlockFor.text = "x" + forBlock.numLoops
+            btnLoops.text = "x" + forBlock.loops
+            btnLoops.setOnClickListener {
+                // TODO: Show dialog that lets users change loop count
+            }
+
+            val adapter = NoteBlockAdapter(forBlock.noteBlocks) {}
+            rvForBlocks.adapter = adapter
+            rvForBlocks.layoutManager =
+                LinearLayoutManager(containerView.context, LinearLayoutManager.HORIZONTAL, false)
+
+            btnForBlockAdd.setOnClickListener {
+                // TODO: Show dialog that adds a note block to forBlock
+            }
         }
 
         fun bindIf(ifBlock: IfBlock) {
-            
+
         }
 
         fun bindMethod(methodBlock: MethodBlock) {
