@@ -9,8 +9,6 @@ import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.ar.sceneform.AnchorNode
-import com.google.ar.sceneform.math.Quaternion
-import com.google.ar.sceneform.math.Vector3
 import com.google.ar.sceneform.rendering.ViewRenderable
 import com.google.ar.sceneform.ux.ArFragment
 import com.google.ar.sceneform.ux.TransformableNode
@@ -48,7 +46,7 @@ class MainFragment : Fragment() {
                     val notes = mutableListOf<Note>()
                     notes.add(Note())
                     val adapter = BlockAdapter(notes) {
-
+                        print (it.toString())
                     }
                     rvBlocks?.adapter = adapter
                     rvBlocks?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
