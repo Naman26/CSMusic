@@ -10,9 +10,11 @@ import android.widget.Toast
 import io.synople.csmusic.MainActivity
 
 import io.synople.csmusic.R
+import io.synople.csmusic.model.Block
 import io.synople.csmusic.model.NoteBlock
 import kotlinx.android.synthetic.main.fragment_music.*
 import java.lang.Exception
+import java.util.*
 
 
 class MusicFragment : Fragment() {
@@ -36,18 +38,23 @@ class MusicFragment : Fragment() {
     }
 
     fun play() {
-        var noteBlock = NoteBlock(0, 0, 0, 0)
+
+        
+
+        var noteBlock = NoteBlock(0, 5, 0, 0)
 
         var fileName = noteBlock.fileName
 
         Toast.makeText(context, "File Name: " + fileName, Toast.LENGTH_LONG).show()
 
+        val resID = stringToResId(fileName)
 
         val mpintro = MediaPlayer.create(context, R.raw.c3i)
         mpintro.isLooping = false
         mpintro.start()
 
-        val resID = resources.getIdentifier(fileName, "id",)
+
+
 
 
 //        val f = File("/Users/harnoor/Downloads/pianonotes/c3i.wav")
@@ -62,6 +69,7 @@ class MusicFragment : Fragment() {
 //            start()
 //        }
     }
+
 
     fun stringToResId(str: String): Int {
         when (str) {
@@ -117,8 +125,45 @@ class MusicFragment : Fragment() {
             "f5h" -> return R.raw.f5h
             "f5w" -> return R.raw.f5w
 
+            "g3i" -> return R.raw.g3i
+            "g3q" -> return R.raw.g3q
+            "g3h" -> return R.raw.g3h
+            "g3w" -> return R.raw.g3w
+            "g4i" -> return R.raw.g4i
+            "g4q" -> return R.raw.g4i
+            "g4h" -> return R.raw.g4h
+            "g4w" -> return R.raw.g4w
+            "g5i" -> return R.raw.g5i
+            "g5q" -> return R.raw.g5q
+            "g5h" -> return R.raw.g5h
+            "g5w" -> return R.raw.g5w
 
 
+            "a3i" -> return R.raw.a3i
+            "a3q" -> return R.raw.a3q
+            "a3h" -> return R.raw.a3h
+            "a3w" -> return R.raw.a3w
+            "a4i" -> return R.raw.a4i
+            "a4q" -> return R.raw.a4i
+            "a4h" -> return R.raw.a4h
+            "a4w" -> return R.raw.a4w
+            "a5i" -> return R.raw.a5i
+            "a5q" -> return R.raw.a5q
+            "a5h" -> return R.raw.a5h
+            "a5w" -> return R.raw.a5w
+
+            "b3i" -> return R.raw.b3i
+            "b3q" -> return R.raw.b3q
+            "b3h" -> return R.raw.b3h
+            "b3w" -> return R.raw.b3w
+            "b4i" -> return R.raw.b4i
+            "b4q" -> return R.raw.b4i
+            "b4h" -> return R.raw.b4h
+            "b4w" -> return R.raw.b4w
+            "b5i" -> return R.raw.b5i
+            "b5q" -> return R.raw.b5q
+            "b5h" -> return R.raw.b5h
+            "b5w" -> return R.raw.b5w
 
             else -> { // Note the block
                 throw Exception("No file found")
@@ -126,3 +171,6 @@ class MusicFragment : Fragment() {
         }
     }
 }
+
+
+//block (arraylist) to noteblock
