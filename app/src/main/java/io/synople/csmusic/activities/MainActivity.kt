@@ -2,7 +2,7 @@ package io.synople.csmusic
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import io.synople.csmusic.fragments.MainFragment
+import io.synople.csmusic.fragments.MusicFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -10,9 +10,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+//        supportFragmentManager
+//            .beginTransaction()
+//            .replace(R.id.mainFrameLayout, MainFragment.newInstance())
+//            .commit();
+
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.mainFrameLayout, MainFragment.newInstance())
+            .replace(R.id.mainFrameLayout, MusicFragment.newInstance())
             .commit();
     }
 }
