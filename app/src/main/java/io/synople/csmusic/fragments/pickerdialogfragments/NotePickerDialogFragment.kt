@@ -124,14 +124,15 @@ class NotePickerDialogFragment : DialogFragment() {
         }
 
         btnAdd.setOnClickListener {
-            onFinish(
-                NoteBlock(
-                    tvKeyValue.text.toString().toInt(),
-                    tvNoteValue.text.toString().toInt(),
-                    tvOctaveValue.text.toString().toInt(),
-                    tvLengthValue.text.toString().toInt()
-                )
-            )
+            onFinish(NoteBlock())
+//            onFinish(
+//                NoteBlock(
+//                    tvKeyValue.text.toString().toInt(),
+//                    tvNoteValue.text.toString().toInt(),
+//                    tvOctaveValue.text.toString().toInt(),
+//                    tvLengthValue.text.toString().toInt()
+//                )
+//            )
             dismiss()
         }
     }
