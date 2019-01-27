@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.synople.csmusic.MainActivity
-import io.synople.csmusic.R
 import io.synople.csmusic.fragments.pickerdialogfragments.ForPickerDialogFragment
 import io.synople.csmusic.fragments.pickerdialogfragments.NotePickerDialogFragment
 import io.synople.csmusic.model.*
@@ -16,6 +15,8 @@ import kotlinx.android.synthetic.main.block_note.*
 import kotlinx.android.synthetic.main.block_for.*
 import kotlinx.android.synthetic.main.block_if.*
 import kotlinx.android.synthetic.main.block_method.*
+import androidx.appcompat.app.AlertDialog
+
 
 private const val FOR_BLOCK = 0
 private const val IF_BLOCK = 1
@@ -72,12 +73,37 @@ class BlockAdapter(val blocks: List<Block>, private val itemClick: (Block) -> Un
 
         fun bindIf(ifBlock: IfBlock) {
             btnAction.setOnClickListener {
-                // TODO: Show possible actions (chord or random)
+                val b = AlertDialog.Builder(it.context)
+                b.setTitle("Action")
+                b.setItems(arrayOf("Chord", "Random")) { dialog, which ->
+                    dialog.dismiss()
+                    if (which == 0) {
+                        ifBlock.list = mutableListOf(NoteBlock(), NoteBlock(), NoteBlock())
+                        btnAction.text = "${ifBlock.list[0]}\n${ifBlock.list[1]}${ifBlock.list[2]}"
+                    } else {
+                        val noteBlock = NoteBlock()
+                        noteBlock.isRandom = true
+                        ifBlock.list = mutableListOf(noteBlock)
+                        btnAction.text = "?"
+                    }
+                }
+                b.show()
             }
             btnExpression.setOnClickListener {
-                // TODO: Let user add whatever.
-            }
+                val b = AlertDialog.Builder(it.context)
+                b.setTitle("Expression")
+                b.setItems(arrayOf("Chord", "Random")) { dialog, which ->
+                    dialog.dismiss()
+                    ifBlock.expr = IfBlock.expression[which]
 
+                    if (which == 0) {
+                        btnExpression.text = "Chord"
+                    } else {
+                        btnExpression.text = "?"
+                    }
+                }
+                b.show()
+            }
 
             when (ifBlock.colorStatus) {
                 0 -> rlBlockIf.setBackgroundColor(Color.parseColor("#ffffff"))
@@ -111,10 +137,10 @@ class BlockAdapter(val blocks: List<Block>, private val itemClick: (Block) -> Un
         return ViewHolder(
             LayoutInflater.from(parent.context).inflate(
                 when (viewType) {
-                    FOR_BLOCK -> R.layout.block_for
-                    IF_BLOCK -> R.layout.block_if
-                    METHOD_BLOCK -> R.layout.block_method
-                    else -> R.layout.block_note
+                    FOR_BLOCK -> io.synople.csmusic.R.layout.block_for
+                    IF_BLOCK -> io.synople.csmusic.R.layout.block_if
+                    METHOD_BLOCK -> io.synople.csmusic.R.layout.block_method
+                    else -> io.synople.csmusic.R.layout.block_note
                 },
                 parent, false
             ), itemClick

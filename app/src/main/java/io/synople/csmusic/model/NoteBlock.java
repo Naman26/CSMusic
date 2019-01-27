@@ -5,7 +5,7 @@ import java.util.Random;
 public class NoteBlock extends Block {
 
     //bool for if note is random
-    Boolean isRandom;
+    public Boolean isRandom;
 
     //Key of C
     public static final String[] keyC = {"c", "d", "e", "f", "g", "a", "b", "c"};

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IfBlock extends Block {
-    String[] expression = {"CHORD", "RANDOM"};
-    String expr;
+    public static final String[] expression = {"CHORD", "RANDOM"};
+    public String expr;
     public List<NoteBlock> list;
 
     // default constructor sets expr to empty string and list to empty array list
