@@ -4,34 +4,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IfBlock extends Block {
-    // TODO: Make this selectable enum (e.g. previous note was high. etc.)
-    String[] expression = {"CHORD", "MODULATION"};
+    String[] expression = {"CHORD", "RANDOM"};
     String expr;
-
     public List<NoteBlock> list;
 
+    // default constructor sets expr to empty string and list to empty array list
     public IfBlock() {
+        expr = "";
         list = new ArrayList<>();
     }
 
+    // constructor takes @param listIn of noteblocks and sets expr value based on evaluation of listIn
     public IfBlock(List<NoteBlock> listIn) {
         // if statement followed by a chord
+        this();
+
         if (list.size() == 3) {
             list = listIn;
             expr = expression[0];
         }
-
         // if statement followed by a rando
-        if (list.size() == 1) {
+        else if (list.size() == 1) {
             list = listIn;
             if (list.get(0).isRandom) {
                 expr = expression[1];
-
             }
         }
     }
 
     public String getExpr() {
         return expr;
+    }
+
+    public List<NoteBlock> getNoteBlocks(){
+        return list;
     }
 }

@@ -29,40 +29,64 @@ public class MusicCompiler {
     public List<List<NoteBlock>>  compile() {
         for (int i = 0; i < blocks.size(); i++) {
             Block b = blocks.get(i);
-            if (b instanceof NoteBlock) {
-                addNoteBlockToNotes((NoteBlock) b);
-            }
-
-            if (b instanceof IfBlock) {
-                addIfBlocktoNotes((IfBlock) b);
-            }
-
-            if (b instanceof ForBlock) {
-                addForBlocktoNotes((ForBlock) b);
-            }
-
-            if (b instanceof MethodBlock) {
-                addMethodBlocktoNotes((MethodBlock) b);
-            }
+            blockToNote(b);
         }
         return notes;
     }
 
+    public void blockToNote(Block bIn){
+        Block b = bIn;
+        if (b instanceof NoteBlock) {
+            addNoteBlockToNotes((NoteBlock) b);
+        }
 
+        if (b instanceof IfBlock) {
+            addIfBlockToNotes((IfBlock) b);
+        }
 
-    public void addNoteBlockToNotes(NoteBlock blockIn){
+        if (b instanceof ForBlock) {
+            addForBlocktoNotes((ForBlock) b);
+        }
+
+        if (b instanceof MethodBlock) {
+            addMethodBlocktoNotes((MethodBlock) b);
+        }
+    }
+
+    public void addNoteBlockToNotes(NoteBlock bIn){
         ArrayList<NoteBlock> arr = new ArrayList<>();
-        arr.add((NoteBlock) blockIn);
+        arr.add((NoteBlock) bIn);
         notes.add(arr);
     }
 
-    public void addIfBlocktoNotes(IfBlock blockIn){
+    public void addIfBlockToNotes(IfBlock blockIn) {
+        if (blockIn.getExpr().equals("CHORD") || blockIn.getExpr().equals("RANDOM")) {
+            notes.add(blockIn.getNoteBlocks());
+        }
+    }
+
+    public void addMethodBlocktoNotes(MethodBlock blockIn) {
+        List<Block> list = blockIn.getList();
+        for (int i = 0; i < list.size(); i++) {
+            blockToNote(list.get(i));
+        }
+    }
+
+    public void addForBlocktoNotes(ForBlock blockIn) {
+        int loops = blockIn.getLoops();
+        if (blockIn.hasMethod) {
+            MethodBlock method = blockIn.getMethod();
+            for (int i = 0; i < loops; i++) {
+                addMethodBlocktoNotes(method);
+            }
+        }
+        else
+            {
+                for (int i = 0; i < loops; i++) {
+                   notes.addAll(blockIn.getNotes());
+             }
+            }
 
     }
-    public void addForBlocktoNotes(ForBlock blockIn){
 
-    }
-    public void addMethodBlocktoNotes(MethodBlock blockIn){
-
-    }
 }

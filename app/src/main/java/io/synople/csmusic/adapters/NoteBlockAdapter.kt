@@ -10,7 +10,7 @@ import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.block_note.*
 
 
-class NoteBlockAdapter(private val noteBlocks: List<NoteBlock>, private val itemClick: (Block) -> Unit) :
+class NoteBlockAdapter(private val noteBlocks: MutableList<NoteBlock>, private val itemClick: (Block) -> Unit) :
     RecyclerView.Adapter<NoteBlockAdapter.ViewHolder>() {
 
     class ViewHolder(override val containerView: View, private val itemClick: (Block) -> Unit) :

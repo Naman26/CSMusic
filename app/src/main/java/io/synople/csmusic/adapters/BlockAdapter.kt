@@ -25,7 +25,7 @@ class BlockAdapter(val blocks: List<Block>, private val itemClick: (Block) -> Un
         RecyclerView.ViewHolder(containerView), LayoutContainer {
 
         fun bindNote(noteBlock: NoteBlock) {
-            tvBlockNote.text = noteBlock.toString()
+            tvBlockNote.text = noteBlock.fileName
         }
 
         fun bindFor(forBlock: ForBlock) {
@@ -34,7 +34,7 @@ class BlockAdapter(val blocks: List<Block>, private val itemClick: (Block) -> Un
                 // TODO: Show dialog that lets users change loop count
             }
 
-            val adapter = NoteBlockAdapter(forBlock.noteBlocks) {}
+            val adapter = NoteBlockAdapter(forBlock.noteBlocks[0]) {}
             rvForBlocks.adapter = adapter
             rvForBlocks.layoutManager =
                 LinearLayoutManager(containerView.context, LinearLayoutManager.HORIZONTAL, false)
