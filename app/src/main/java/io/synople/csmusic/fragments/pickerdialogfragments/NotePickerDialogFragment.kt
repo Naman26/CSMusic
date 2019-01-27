@@ -51,13 +51,15 @@ class NotePickerDialogFragment : DialogFragment() {
                 "C" -> {
                     var indexOf = NoteBlock.keyC.indexOf(tvNoteValue.text)
                     indexOf++
-                    if (indexOf > NoteBlock.keyC.size) indexOf = 0
+                    tvNoteValue.text = NoteBlock.keyC[indexOf]
 
+                    if (indexOf > NoteBlock.keyC.size) indexOf = 0
                     tvNoteValue.text = NoteBlock.keyC[indexOf]
                 }
                 "D" -> {
                     var indexOf = NoteBlock.keyD.indexOf(tvNoteValue.text)
                     indexOf++
+                    tvNoteValue.text = NoteBlock.keyD[indexOf]
                     if (indexOf > NoteBlock.keyD.size) indexOf = 0
 
                     tvNoteValue.text = NoteBlock.keyD[indexOf]
@@ -65,6 +67,7 @@ class NotePickerDialogFragment : DialogFragment() {
                 "G" -> {
                     var indexOf = NoteBlock.keyG.indexOf(tvNoteValue.text)
                     indexOf++
+                    tvNoteValue.text = NoteBlock.keyG[indexOf]
                     if (indexOf > NoteBlock.keyG.size) indexOf = 0
 
                     tvNoteValue.text = NoteBlock.keyG[indexOf]
@@ -72,25 +75,26 @@ class NotePickerDialogFragment : DialogFragment() {
             }
         }
         tvNoteMinus.setOnClickListener {
-            when (tvNoteValue.text) {
+            when (tvKeyValue.text) {
                 "C" -> {
                     var indexOf = NoteBlock.keyC.indexOf(tvKeyValue.text)
                     indexOf--
-                    if (indexOf > NoteBlock.keyC.size) indexOf = 0
+                    if (indexOf <0) indexOf = 7
 
                     tvNoteValue.text = NoteBlock.keyC[indexOf]
                 }
                 "D" -> {
                     var indexOf = NoteBlock.keyD.indexOf(tvNoteValue.text)
                     indexOf--
-                    if (indexOf > NoteBlock.keyD.size) indexOf = 0
+                    if (indexOf <0) indexOf = 7
 
                     tvNoteValue.text = NoteBlock.keyD[indexOf]
+
                 }
                 "G" -> {
                     var indexOf = NoteBlock.keyG.indexOf(tvNoteValue.text)
                     indexOf--
-                    if (indexOf > NoteBlock.keyG.size) indexOf = 0
+                    if (indexOf <0) indexOf = 7
 
                     tvNoteValue.text = NoteBlock.keyG[indexOf]
                 }
