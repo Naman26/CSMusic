@@ -5,13 +5,17 @@ import android.media.MediaPlayer
 import io.synople.csmusic.model.NoteBlock
 import java.lang.Exception
 
-class MusicPlayer(private var context: Context) : MediaPlayer.OnCompletionListener {
+class MusicPlayer(private var context: Context, private val onPlay: (String) -> Unit) :
+    MediaPlayer.OnCompletionListener {
     private var noteRes: MutableList<MutableList<Int>> = mutableListOf()
+    private var noteBlocks: MutableList<MutableList<NoteBlock>> = mutableListOf()
     private lateinit var mediaPlayer: MediaPlayer
 
     private var currPlaying = 0
 
     fun play(noteBlockList: MutableList<MutableList<NoteBlock>>) {
+        noteBlocks = noteBlockList
+
         noteBlockList.forEach {
             val tempRes = mutableListOf<Int>()
             it.forEach { noteBlock ->
@@ -32,6 +36,7 @@ class MusicPlayer(private var context: Context) : MediaPlayer.OnCompletionListen
             }
         }
         mediaPlayer.setOnCompletionListener(this)
+        onPlay(noteBlockList[0][0].id)
         mediaPlayer.start()
     }
 
@@ -47,6 +52,7 @@ class MusicPlayer(private var context: Context) : MediaPlayer.OnCompletionListen
                 }
             }
             nextMp.setOnCompletionListener(this)
+            onPlay(noteBlocks[currPlaying][0].id)
             nextMp.start()
         }
     }

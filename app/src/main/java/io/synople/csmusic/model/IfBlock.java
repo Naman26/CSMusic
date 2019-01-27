@@ -36,7 +36,7 @@ public class IfBlock extends Block {
         return expr;
     }
 
-    public List<NoteBlock> getNoteBlocks(){
+    public List<NoteBlock> getNoteBlocks() {
         return list;
     }
 }

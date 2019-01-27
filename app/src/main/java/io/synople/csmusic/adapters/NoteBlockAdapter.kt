@@ -10,14 +10,21 @@ import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.block_note.*
 
 
-class NoteBlockAdapter(private val noteBlocks: MutableList<NoteBlock>, private val itemClick: (Block) -> Unit) :
+class NoteBlockAdapter(
+    private val noteBlocks: MutableList<MutableList<NoteBlock>>,
+    private val itemClick: (Block) -> Unit
+) :
     RecyclerView.Adapter<NoteBlockAdapter.ViewHolder>() {
 
     class ViewHolder(override val containerView: View, private val itemClick: (Block) -> Unit) :
         RecyclerView.ViewHolder(containerView), LayoutContainer {
 
-        fun bindNote(noteBlock: NoteBlock) {
-            tvBlockNote.text = noteBlock.toString()
+        fun bindNote(noteBlocks: MutableList<NoteBlock>) {
+            var text = ""
+            noteBlocks.forEach {
+                text += it.fileName + "\n"
+            }
+            tvBlockNote.text = text
 
             rlBlockNote.setOnClickListener { itemClick }
         }

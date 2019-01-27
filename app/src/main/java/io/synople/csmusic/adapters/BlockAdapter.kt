@@ -1,11 +1,14 @@
 package io.synople.csmusic.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import io.synople.csmusic.MainActivity
 import io.synople.csmusic.R
+import io.synople.csmusic.fragments.pickerdialogfragments.NotePickerDialogFragment
 import io.synople.csmusic.model.*
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.block_note.*
@@ -26,21 +29,40 @@ class BlockAdapter(val blocks: List<Block>, private val itemClick: (Block) -> Un
 
         fun bindNote(noteBlock: NoteBlock) {
             tvBlockNote.text = noteBlock.fileName
+
+
+            when (noteBlock.colorStatus) {
+                0 -> rlBlockNote.setBackgroundColor(Color.parseColor("#ffffff"))
+                1 -> rlBlockNote.setBackgroundColor(Color.parseColor("#006400"))
+                2 -> rlBlockNote.setBackgroundColor(Color.parseColor("#00ff00"))
+            }
         }
 
         fun bindFor(forBlock: ForBlock) {
-            btnLoops.text = "x" + forBlock.loops
+            btnLoops.text = forBlock.loops.toString()
             btnLoops.setOnClickListener {
                 // TODO: Show dialog that lets users change loop count
             }
 
-            val adapter = NoteBlockAdapter(forBlock.noteBlocks[0]) {}
+            val adapter = NoteBlockAdapter(forBlock.noteBlocks) {}
             rvForBlocks.adapter = adapter
             rvForBlocks.layoutManager =
                 LinearLayoutManager(containerView.context, LinearLayoutManager.HORIZONTAL, false)
 
             btnForBlockAdd.setOnClickListener {
                 // TODO: Show dialog that adds a note block to forBlock
+                NotePickerDialogFragment.newInstance()
+                    .show((containerView.context as MainActivity).supportFragmentManager) {
+                        forBlock.noteBlocks.add(mutableListOf(it))
+                        adapter.notifyDataSetChanged()
+                    }
+            }
+
+
+            when (forBlock.colorStatus) {
+                0 -> rlBlockFor.setBackgroundColor(Color.parseColor("#ffffff"))
+                1 -> rlBlockFor.setBackgroundColor(Color.parseColor("#006400"))
+                2 -> rlBlockFor.setBackgroundColor(Color.parseColor("#00ff00"))
             }
         }
 
@@ -51,10 +73,23 @@ class BlockAdapter(val blocks: List<Block>, private val itemClick: (Block) -> Un
             btnExpression.setOnClickListener {
                 // TODO: Let user add whatever.
             }
+
+
+            when (ifBlock.colorStatus) {
+                0 -> rlBlockIf.setBackgroundColor(Color.parseColor("#ffffff"))
+                1 -> rlBlockIf.setBackgroundColor(Color.parseColor("#006400"))
+                2 -> rlBlockIf.setBackgroundColor(Color.parseColor("#00ff00"))
+            }
         }
 
         fun bindMethod(methodBlock: MethodBlock) {
             tvBlockMethod.text = "M${methodBlock.methodNum}"
+
+            when (methodBlock.colorStatus) {
+                0 -> containerView.setBackgroundColor(0xFFFFFF)
+                1 -> containerView.setBackgroundColor(0x006400)
+                2 -> containerView.setBackgroundColor(0x00ff00)
+            }
         }
     }
 

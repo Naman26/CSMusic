@@ -74,10 +74,17 @@ class MainFragment : Fragment() {
                     }
 
                     renderable?.view?.findViewById<Button>(R.id.btnAddFor)?.setOnClickListener {
-                        ForPickerDialogFragment.newInstance().show(fragmentManager!!) {
-                            notes.add(it)
-                            adapter.notifyDataSetChanged()
-                        }
+                        //                        ForPickerDialogFragment.newInstance().show(fragmentManager!!) {
+//                            notes.add(it)
+//                            adapter.notifyDataSetChanged()
+//                        }
+                        notes.add(
+                            ForBlock(
+                                2,
+                                mutableListOf(mutableListOf(NoteBlock(), NoteBlock()), mutableListOf(NoteBlock()))
+                            )
+                        )
+                        adapter.notifyDataSetChanged()
                     }
                     renderable?.view?.findViewById<Button>(R.id.btnAddIf)?.setOnClickListener {
                         //                        IfPickerDialogFragment.newInstance().show(fragmentManager!!) {
@@ -91,7 +98,15 @@ class MainFragment : Fragment() {
         }
 
         ivPlay.setOnClickListener {
-            val musicPlayer = MusicPlayer(context!!)
+            val musicPlayer = MusicPlayer(context!!) {
+                adapters[0].blocks.forEach { block ->
+                    if (block.colorStatus == 2) block.colorStatus = 1
+                    if (block.id != it) {
+                        block.colorStatus = 2
+                    }
+                }
+                adapters[0].notifyDataSetChanged()
+            }
             val p = MusicCompiler(adapters[0].blocks).compile()
             musicPlayer.play(p)
         }

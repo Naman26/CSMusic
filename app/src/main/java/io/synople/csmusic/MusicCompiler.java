@@ -6,27 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MusicCompiler {
-    // TODO: Create a method that takes in the List<Block> and gives a string for Harnoor to play
-    // This method should essentially be our compiler.
+    // This class should essentially be our compiler.
     List<Block> blocks;
     List<List<NoteBlock>> notes;
-    int totalCounts;
 
-    public MusicCompiler() {
-        this(new ArrayList<>());
-    }
-
-    //
     public MusicCompiler(List<Block> blocksIn) {
         blocks = blocksIn;
         notes = new ArrayList<>();
     }
 
-    public void addBlock(Block b) {
-        blocks.add(b);
-    }
-
-    public List<List<NoteBlock>>  compile() {
+    public List<List<NoteBlock>> compile() {
         for (int i = 0; i < blocks.size(); i++) {
             Block b = blocks.get(i);
             blockToNote(b);
@@ -34,58 +23,55 @@ public class MusicCompiler {
         return notes;
     }
 
-    public void blockToNote(Block bIn){
-        Block b = bIn;
-        if (b instanceof NoteBlock) {
-            addNoteBlockToNotes((NoteBlock) b);
+    private void blockToNote(Block bIn) {
+        if (bIn instanceof NoteBlock) {
+            addNoteBlockToNotes((NoteBlock) bIn);
         }
 
-        if (b instanceof IfBlock) {
-            addIfBlockToNotes((IfBlock) b);
+        if (bIn instanceof IfBlock) {
+            addIfBlockToNotes((IfBlock) bIn);
         }
 
-        if (b instanceof ForBlock) {
-            addForBlocktoNotes((ForBlock) b);
+        if (bIn instanceof ForBlock) {
+            addForBlockToNotes((ForBlock) bIn);
         }
 
-        if (b instanceof MethodBlock) {
-            addMethodBlocktoNotes((MethodBlock) b);
+        if (bIn instanceof MethodBlock) {
+            addMethodBlockToNotes((MethodBlock) bIn);
         }
     }
 
-    public void addNoteBlockToNotes(NoteBlock bIn){
+    private void addNoteBlockToNotes(NoteBlock bIn) {
         ArrayList<NoteBlock> arr = new ArrayList<>();
-        arr.add((NoteBlock) bIn);
+        arr.add(bIn);
         notes.add(arr);
     }
 
-    public void addIfBlockToNotes(IfBlock blockIn) {
+    private void addIfBlockToNotes(IfBlock blockIn) {
         if (blockIn.getExpr().equals("CHORD") || blockIn.getExpr().equals("RANDOM")) {
             notes.add(blockIn.getNoteBlocks());
         }
     }
 
-    public void addMethodBlocktoNotes(MethodBlock blockIn) {
+    private void addMethodBlockToNotes(MethodBlock blockIn) {
         List<Block> list = blockIn.getList();
         for (int i = 0; i < list.size(); i++) {
             blockToNote(list.get(i));
         }
     }
 
-    public void addForBlocktoNotes(ForBlock blockIn) {
+    private void addForBlockToNotes(ForBlock blockIn) {
         int loops = blockIn.getLoops();
         if (blockIn.hasMethod) {
             MethodBlock method = blockIn.getMethod();
             for (int i = 0; i < loops; i++) {
-                addMethodBlocktoNotes(method);
+                addMethodBlockToNotes(method);
+            }
+        } else {
+            for (int i = 0; i < loops; i++) {
+                notes.addAll(blockIn.getNotes());
             }
         }
-        else
-            {
-                for (int i = 0; i < loops; i++) {
-                   notes.addAll(blockIn.getNotes());
-             }
-            }
 
     }
 
