@@ -45,7 +45,7 @@ class BlockAdapter(val blocks: List<Block>, private val itemClick: (Block) -> Un
                 ForPickerDialogFragment.newInstance()
                     .show((containerView.context as MainActivity).supportFragmentManager) {
                         forBlock.loops = it.loops
-
+                        btnLoops.text = it.loops.toString()
                     }
             }
 
@@ -133,7 +133,6 @@ class BlockAdapter(val blocks: List<Block>, private val itemClick: (Block) -> Un
             }
         }
     }
-
 
 
     override fun getItemCount() = blocks.size
