@@ -7,15 +7,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import io.synople.csmusic.R
+import io.synople.csmusic.model.ForBlock
 import io.synople.csmusic.model.IfBlock
+import kotlinx.android.synthetic.main.dialog_fragment_for_picker.*
 import kotlinx.android.synthetic.main.dialog_fragment_if_picker.*
 
 
 class ForPickerDialogFragment : DialogFragment() {
 
-    private lateinit var onFinish: (IfBlock) -> Unit
+    private lateinit var onFinish: (ForBlock) -> Unit
 
-    fun show(fm: FragmentManager, onFinish: (IfBlock) -> Unit) {
+    fun show(fm: FragmentManager, onFinish: (ForBlock) -> Unit) {
         this.onFinish = onFinish
         show(fm, "IfPickerDialogFragment")
     }
@@ -26,8 +28,20 @@ class ForPickerDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        btnAdd.setOnClickListener {
-            onFinish(IfBlock())
+        tvLoopPlus.setOnClickListener {
+            var iter = tvIterations.text.toString().toInt()
+            iter++;
+            tvIterations.text = iter.toString()
+        }
+        tvLoopMinus.setOnClickListener {
+            var iter = tvIterations.text.toString().toInt()
+            if (iter > 2)
+                iter--
+            tvIterations.text = iter.toString()
+        }
+
+        btnAddLoops.setOnClickListener {
+            onFinish(ForBlock(tvIterations.text.toString().toInt()))
             dismiss()
         }
     }

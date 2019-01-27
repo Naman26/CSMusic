@@ -10,8 +10,11 @@ public class ForBlock extends Block {
     public boolean hasMethod;
 
     public ForBlock() {
-        loops = 2;
-        noteBlocks = new ArrayList<>();
+        this(2);
+    }
+
+    public ForBlock(int loops) {
+        this(loops, new ArrayList<>());
     }
 
     public ForBlock(int loopsIn, List<List<NoteBlock>> noteBlocksIn) {

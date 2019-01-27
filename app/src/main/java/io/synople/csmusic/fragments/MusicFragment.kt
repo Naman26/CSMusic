@@ -6,16 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.FragmentManager
-import io.synople.csmusic.MusicPlayer
 
 import io.synople.csmusic.R
-import io.synople.csmusic.fragments.pickerdialogfragments.NotePickerDialogFragment
-import io.synople.csmusic.model.NoteBlock
-import kotlinx.android.synthetic.main.dialog_fragment_note_picker.*
-import kotlinx.android.synthetic.main.fragment_music.*
-import java.util.*
+import io.synople.csmusic.fragments.pickerdialogfragments.ForPickerDialogFragment
+import io.synople.csmusic.fragments.pickerdialogfragments.IfPickerDialogFragment
 
 
 class MusicFragment : Fragment() {
@@ -28,10 +22,17 @@ class MusicFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val fm = fragmentManager
-        val notePickerDialog = NotePickerDialogFragment()
+//        val fm = fragmentManager
+//        val ifPickerDialogFragment = IfPickerDialogFragment()
+//
+//        ifPickerDialogFragment.show(fm!!) {
+//
+//        }
 
-        notePickerDialog.show(fm!!) {
+        val fm = fragmentManager
+        val ifPickerDialogFragment = ForPickerDialogFragment()
+
+        ifPickerDialogFragment.show(fm!!) {
 
         }
     }
