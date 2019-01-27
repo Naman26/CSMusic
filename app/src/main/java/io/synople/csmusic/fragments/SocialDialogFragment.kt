@@ -40,7 +40,9 @@ class SocialDialogFragment : DialogFragment() {
         prepareData()
 
         val adapter = ProfileViewAdapter(profileList, onPlayClick = {
-            val player = MusicPlayer(context!!)
+            val player = MusicPlayer(context!!) {
+                
+            }
             player.play(it.music)
 
         }, onDownloadClick = {

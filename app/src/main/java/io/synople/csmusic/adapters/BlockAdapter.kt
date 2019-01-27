@@ -35,8 +35,8 @@ class BlockAdapter(val blocks: List<Block>, private val itemClick: (Block) -> Un
 
             when (noteBlock.colorStatus) {
                 0 -> rlBlockNote.setBackgroundColor(Color.parseColor("#ffffff"))
-                1 -> rlBlockNote.setBackgroundColor(Color.parseColor("#006400"))
-                2 -> rlBlockNote.setBackgroundColor(Color.parseColor("#00ff00"))
+                1 -> rlBlockNote.setBackgroundColor(Color.parseColor("#00ff00"))
+                2 -> rlBlockNote.setBackgroundColor(Color.parseColor("#006400"))
             }
         }
 
@@ -66,8 +66,8 @@ class BlockAdapter(val blocks: List<Block>, private val itemClick: (Block) -> Un
 
             when (forBlock.colorStatus) {
                 0 -> rlBlockFor.setBackgroundColor(Color.parseColor("#ffffff"))
-                1 -> rlBlockFor.setBackgroundColor(Color.parseColor("#006400"))
-                2 -> rlBlockFor.setBackgroundColor(Color.parseColor("#00ff00"))
+                1 -> rlBlockFor.setBackgroundColor(Color.parseColor("#00ff00"))
+                2 -> rlBlockFor.setBackgroundColor(Color.parseColor("#006400"))
             }
         }
 
@@ -107,8 +107,8 @@ class BlockAdapter(val blocks: List<Block>, private val itemClick: (Block) -> Un
 
             when (ifBlock.colorStatus) {
                 0 -> rlBlockIf.setBackgroundColor(Color.parseColor("#ffffff"))
-                1 -> rlBlockIf.setBackgroundColor(Color.parseColor("#006400"))
-                2 -> rlBlockIf.setBackgroundColor(Color.parseColor("#00ff00"))
+                1 -> rlBlockIf.setBackgroundColor(Color.parseColor("#00ff00"))
+                2 -> rlBlockIf.setBackgroundColor(Color.parseColor("#006400"))
             }
         }
 

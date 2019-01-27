@@ -1,16 +1,20 @@
 package io.synople.csmusic.fragments
 
 import android.os.Bundle
+import android.os.SystemClock
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.ar.core.Frame
 import com.google.ar.sceneform.AnchorNode
 import com.google.ar.sceneform.Node
+import com.google.ar.sceneform.collision.Ray
 import com.google.ar.sceneform.math.Quaternion
 import com.google.ar.sceneform.math.Vector3
 import com.google.ar.sceneform.rendering.ViewRenderable
@@ -129,12 +133,21 @@ class MainFragment : Fragment() {
         }
 
         ivSocial.setOnClickListener {
-            
+            SocialDialogFragment.newInstance().show(fragmentManager!!) {
+
+            }
         }
     }
+
+    fun getScreenCenter(): Vector3 {
+        val vw = activity!!.findViewById<View>(android.R.id.content)
+        return Vector3(vw.width / 2f, vw.height / 2f, 0f)
+    }
+
 
     companion object {
         @JvmStatic
         fun newInstance() = MainFragment()
     }
 }
+
