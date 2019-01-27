@@ -79,7 +79,7 @@ class BlockAdapter(val blocks: List<Block>, private val itemClick: (Block) -> Un
                     dialog.dismiss()
                     if (which == 0) {
                         ifBlock.list = mutableListOf(NoteBlock(), NoteBlock(), NoteBlock())
-                        btnAction.text = "${ifBlock.list[0]}\n${ifBlock.list[1]}${ifBlock.list[2]}"
+                        btnAction.text = "${ifBlock.list[0].fileName}\n${ifBlock.list[1].fileName}${ifBlock.list[2].fileName}"
                     } else {
                         val noteBlock = NoteBlock()
                         noteBlock.isRandom = true

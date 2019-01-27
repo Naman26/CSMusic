@@ -19,6 +19,7 @@
         android:id="@+id/btnLoops"
         android:layout_width="15dp"
         android:layout_height="15dp"
+        android:layout_margin="2dp"
         android:background="@color/colorPrimaryDark"
         android:textAllCaps="false"
         android:textColor="#ffffff"
@@ -33,12 +34,14 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvForBlocks"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp" />
 
     <Button
         android:id="@+id/btnForBlockAdd"
         android:layout_width="20dp"
         android:layout_height="15dp"
+        android:layout_margin="2dp"
         android:layout_marginStart="6dp"
         android:background="@color/colorPrimaryDark"
         android:text="Note"
