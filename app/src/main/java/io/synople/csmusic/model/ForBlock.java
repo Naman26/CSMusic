@@ -14,15 +14,7 @@ public class ForBlock extends Block {
         noteBlocks = new ArrayList<>();
     }
 
-<<<<<<< HEAD
     public ForBlock(int loopsIn, List<List<NoteBlock>> noteBlocksIn) {
-=======
-    public ForBlock(int loops) {
-        this(loops, new ArrayList<>());
-    }
-
-    public ForBlock(int loopsIn, List<NoteBlock> noteBlocksIn) {
->>>>>>> bf125e93fe927cd4e4d6bc4544e2acbbe4111e5b
         loops = loopsIn;
         noteBlocks = noteBlocksIn;
         hasMethod = false;

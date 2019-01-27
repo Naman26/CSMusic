@@ -25,7 +25,7 @@ class BlockAdapter(val blocks: List<Block>, private val itemClick: (Block) -> Un
         RecyclerView.ViewHolder(containerView), LayoutContainer {
 
         fun bindNote(noteBlock: NoteBlock) {
-            tvBlockNote.text = noteBlock.fileName
+            tvBlockNote.text = noteBlock.toString()
         }
 
         fun bindFor(forBlock: ForBlock) {

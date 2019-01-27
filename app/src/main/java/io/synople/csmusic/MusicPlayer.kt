@@ -6,29 +6,19 @@ import io.synople.csmusic.model.NoteBlock
 import java.lang.Exception
 
 class MusicPlayer(private var context: Context) : MediaPlayer.OnCompletionListener {
-    private var noteRes: MutableList<MutableList<Int>> = mutableListOf()
+    private var noteRes: MutableList<Int> = mutableListOf()
     private lateinit var mediaPlayer: MediaPlayer
 
     private var currPlaying = 0
 
-    fun play(noteBlockList: MutableList<MutableList<NoteBlock>>) {
+    fun play(noteBlockList: MutableList<NoteBlock>) {
         noteBlockList.forEach {
-            val tempRes = mutableListOf<Int>()
-            it.forEach { noteBlock ->
-                tempRes.add(stringToResId(noteBlock.fileName))
-            }
-
-            noteRes.add(tempRes)
+            noteRes.add(stringToResId(it.fileName))
         }
 
         currPlaying = 0
 
-        mediaPlayer = MediaPlayer.create(context, noteRes[0][0])
-        for (x in 1..noteRes[0].size) {
-            val tempMP = MediaPlayer.create(context, noteRes[0][x])
-            tempMP.start()
-            tempMP.setOnCompletionListener { finMP -> finMP?.release() }
-        }
+        mediaPlayer = MediaPlayer.create(context, noteRes[0])
         mediaPlayer.setOnCompletionListener(this)
         mediaPlayer.start()
     }
@@ -36,12 +26,7 @@ class MusicPlayer(private var context: Context) : MediaPlayer.OnCompletionListen
     override fun onCompletion(mp: MediaPlayer?) {
         mp?.release()
         if (++currPlaying < noteRes.size) {
-            val nextMp = MediaPlayer.create(context, noteRes[currPlaying][0])
-            for (x in 1..noteRes[currPlaying].size) {
-                val tempMP = MediaPlayer.create(context, noteRes[currPlaying][x])
-                tempMP.start()
-                tempMP.setOnCompletionListener { finMP -> finMP?.release() }
-            }
+            val nextMp = MediaPlayer.create(context, noteRes[currPlaying])
             nextMp.setOnCompletionListener(this)
             nextMp.start()
         }
