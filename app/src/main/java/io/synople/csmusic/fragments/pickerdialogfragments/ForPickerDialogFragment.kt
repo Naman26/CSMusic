@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import io.synople.csmusic.R
-import io.synople.csmusic.model.NoteBlock
+import io.synople.csmusic.model.ForBlock
 import kotlinx.android.synthetic.main.dialog_fragment_for_picker.*
 
 class ForPickerDialogFragment : DialogFragment() {
 
-    private lateinit var onFinish: (NoteBlock) -> Unit
+    private lateinit var onFinish: (ForBlock) -> Unit
 
-    fun show(fm: FragmentManager, onFinish: (NoteBlock) -> Unit) {
+    fun show(fm: FragmentManager, onFinish: (ForBlock) -> Unit) {
         this.onFinish = onFinish
         show(fm, "ForPickerDialogFragment")
     }
@@ -25,10 +25,17 @@ class ForPickerDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        tvForPlus.setOnClickListener {
+            var s = tvForValue.text.toString().toInt() - 1
+            if (s < 0) s = 0
+            tvForValue.text = s.toString()
+        }
+        tvForMinus.setOnClickListener {
+            tvForValue.text = (tvForValue.text.toString().toInt() + 1).toString()
+        }
 
         btnAdd.setOnClickListener {
-            Thread.sleep(1000)
-            onFinish(NoteBlock())
+            onFinish(ForBlock(tvForValue.text.toString().toInt()))
             dismiss()
         }
     }

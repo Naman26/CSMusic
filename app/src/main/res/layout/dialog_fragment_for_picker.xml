@@ -6,11 +6,32 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/tvNote"
+        android:id="@+id/tvForHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="@string/hello_blank_fragment" />
+        android:text="Number of loops" />
+
+    <TextView
+        android:id="@+id/tvForValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvForHeader"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/tvForPlus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvForHeader"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/tvForMinus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvForHeader"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:id="@+id/btnAdd"

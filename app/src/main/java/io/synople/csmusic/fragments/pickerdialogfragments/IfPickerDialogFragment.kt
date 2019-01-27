@@ -7,15 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import io.synople.csmusic.R
-import io.synople.csmusic.model.NoteBlock
+import io.synople.csmusic.model.IfBlock
 import kotlinx.android.synthetic.main.dialog_fragment_if_picker.*
 
 
 class IfPickerDialogFragment : DialogFragment() {
 
-    private lateinit var onFinish: (NoteBlock) -> Unit
+    private lateinit var onFinish: (IfBlock) -> Unit
 
-    fun show(fm: FragmentManager, onFinish: (NoteBlock) -> Unit) {
+    fun show(fm: FragmentManager, onFinish: (IfBlock) -> Unit) {
         this.onFinish = onFinish
         show(fm, "IfPickerDialogFragment")
     }
@@ -28,8 +28,7 @@ class IfPickerDialogFragment : DialogFragment() {
 
 
         btnAdd.setOnClickListener {
-            Thread.sleep(1000)
-            onFinish(NoteBlock())
+            onFinish(IfBlock())
             dismiss()
         }
     }

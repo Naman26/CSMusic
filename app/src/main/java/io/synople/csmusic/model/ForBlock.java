@@ -13,6 +13,10 @@ public class ForBlock extends Block {
         noteBlocks = new ArrayList<>();
     }
 
+    public ForBlock(int loops) {
+        this(loops, new ArrayList<>());
+    }
+
     public ForBlock(int loopsIn, List<NoteBlock> noteBlocksIn) {
         loops = loopsIn;
         noteBlocks = noteBlocksIn;
