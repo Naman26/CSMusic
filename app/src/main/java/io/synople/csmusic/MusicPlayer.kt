@@ -24,10 +24,12 @@ class MusicPlayer(private var context: Context) : MediaPlayer.OnCompletionListen
         currPlaying = 0
 
         mediaPlayer = MediaPlayer.create(context, noteRes[0][0])
-        for (x in 1..noteRes[0].size) {
-            val tempMP = MediaPlayer.create(context, noteRes[0][x])
-            tempMP.start()
-            tempMP.setOnCompletionListener { finMP -> finMP?.release() }
+        if (noteRes[0].size > 1) {
+            for (x in 1..noteRes[0].size) {
+                val tempMP = MediaPlayer.create(context, noteRes[0][x])
+                tempMP.start()
+                tempMP.setOnCompletionListener { finMP -> finMP?.release() }
+            }
         }
         mediaPlayer.setOnCompletionListener(this)
         mediaPlayer.start()
@@ -37,10 +39,12 @@ class MusicPlayer(private var context: Context) : MediaPlayer.OnCompletionListen
         mp?.release()
         if (++currPlaying < noteRes.size) {
             val nextMp = MediaPlayer.create(context, noteRes[currPlaying][0])
-            for (x in 1..noteRes[currPlaying].size) {
-                val tempMP = MediaPlayer.create(context, noteRes[currPlaying][x])
-                tempMP.start()
-                tempMP.setOnCompletionListener { finMP -> finMP?.release() }
+            if (noteRes[currPlaying].size > 1) {
+                for (x in 1..noteRes[currPlaying].size) {
+                    val tempMP = MediaPlayer.create(context, noteRes[currPlaying][x])
+                    tempMP.start()
+                    tempMP.setOnCompletionListener { finMP -> finMP?.release() }
+                }
             }
             nextMp.setOnCompletionListener(this)
             nextMp.start()

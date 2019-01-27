@@ -29,6 +29,7 @@ public class MusicCompiler {
     public List<List<NoteBlock>>  compile() {
         for (int i = 0; i < blocks.size(); i++) {
             Block b = blocks.get(i);
+            blockToNote(b);
         }
         return notes;
     }
