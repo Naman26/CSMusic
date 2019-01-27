@@ -43,7 +43,7 @@ public class NoteBlock extends Block {
         if (key == 3) {
             nameNum = 0;
             oct = 4;
-        } else {2
+        } else {
             nameNum = rand.nextInt(8);
             oct = rand.nextInt(3);
             if (nameNum == 7) oct++;
