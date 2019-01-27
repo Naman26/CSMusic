@@ -30,7 +30,7 @@ class ForPickerDialogFragment : DialogFragment() {
 
         tvLoopPlus.setOnClickListener {
             var iter = tvIterations.text.toString().toInt()
-            iter++;
+            iter++
             tvIterations.text = iter.toString()
         }
         tvLoopMinus.setOnClickListener {

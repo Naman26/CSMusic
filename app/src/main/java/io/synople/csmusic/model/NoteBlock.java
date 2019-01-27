@@ -17,13 +17,13 @@ public class NoteBlock extends Block {
     public static final String[] keyG = {"g", "a", "b", "c", "d", "e", "f#", "g"}; // f#
 
     //Rests
-    String[] keyR = {"r"};
+    public static final String[] keyR = {"r"};
 
     //all keys
-    String[][] keys = {keyC, keyD, keyG, keyR};
+    public static final String[][] keys = {keyC, keyD, keyG, keyR};
 
     //all octaves plus rest "" that cannot be accessed directly by random note gen
-    String[] octStrings = {"3", "4", "5", "6", ""};
+    public static final String[] octStrings = {"3", "4", "5", "6", ""};
 
     //all lengths
     public static final String[] countStrings = {"i", "q", "h", "w"};
