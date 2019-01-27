@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.synople.csmusic.MainActivity
 import io.synople.csmusic.R
+import io.synople.csmusic.fragments.pickerdialogfragments.ForPickerDialogFragment
 import io.synople.csmusic.fragments.pickerdialogfragments.NotePickerDialogFragment
 import io.synople.csmusic.model.*
 import kotlinx.android.extensions.LayoutContainer
@@ -41,7 +42,11 @@ class BlockAdapter(val blocks: List<Block>, private val itemClick: (Block) -> Un
         fun bindFor(forBlock: ForBlock) {
             btnLoops.text = forBlock.loops.toString()
             btnLoops.setOnClickListener {
-                // TODO: Show dialog that lets users change loop count
+                ForPickerDialogFragment.newInstance()
+                    .show((containerView.context as MainActivity).supportFragmentManager) {
+                        forBlock.loops = it.loops
+
+                    }
             }
 
             val adapter = NoteBlockAdapter(forBlock.noteBlocks) {}
@@ -50,7 +55,6 @@ class BlockAdapter(val blocks: List<Block>, private val itemClick: (Block) -> Un
                 LinearLayoutManager(containerView.context, LinearLayoutManager.HORIZONTAL, false)
 
             btnForBlockAdd.setOnClickListener {
-                // TODO: Show dialog that adds a note block to forBlock
                 NotePickerDialogFragment.newInstance()
                     .show((containerView.context as MainActivity).supportFragmentManager) {
                         forBlock.noteBlocks.add(mutableListOf(it))
@@ -129,6 +133,8 @@ class BlockAdapter(val blocks: List<Block>, private val itemClick: (Block) -> Un
             }
         }
     }
+
+
 
     override fun getItemCount() = blocks.size
 }

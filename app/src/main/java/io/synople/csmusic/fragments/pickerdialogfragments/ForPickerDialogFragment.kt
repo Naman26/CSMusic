@@ -8,9 +8,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import io.synople.csmusic.R
 import io.synople.csmusic.model.ForBlock
-import io.synople.csmusic.model.IfBlock
 import kotlinx.android.synthetic.main.dialog_fragment_for_picker.*
-import kotlinx.android.synthetic.main.dialog_fragment_if_picker.*
 
 
 class ForPickerDialogFragment : DialogFragment() {
@@ -28,12 +26,12 @@ class ForPickerDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        tvLoopPlus.setOnClickListener {
+        ivLoopPlus.setOnClickListener {
             var iter = tvIterations.text.toString().toInt()
             iter++
             tvIterations.text = iter.toString()
         }
-        tvLoopMinus.setOnClickListener {
+        ivLoopMinus.setOnClickListener {
             var iter = tvIterations.text.toString().toInt()
             if (iter > 2)
                 iter--
