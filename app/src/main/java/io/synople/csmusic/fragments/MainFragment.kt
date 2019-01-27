@@ -10,6 +10,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.ar.sceneform.AnchorNode
+import com.google.ar.sceneform.Node
+import com.google.ar.sceneform.math.Quaternion
+import com.google.ar.sceneform.math.Vector3
 import com.google.ar.sceneform.rendering.ViewRenderable
 import com.google.ar.sceneform.ux.ArFragment
 import com.google.ar.sceneform.ux.TransformableNode
@@ -41,19 +44,22 @@ class MainFragment : Fragment() {
         arFragment = (childFragmentManager.findFragmentById(R.id.uxFragment) as ArFragment)
         arFragment.setOnTapArPlaneListener { hitResult, plane, motionEvent ->
             val anchor = hitResult.createAnchor()
-            val anchorNode = AnchorNode(anchor)
-            anchorNode.setParent(arFragment.arSceneView.scene)
+            val anchorNode = AnchorNode(anchor).apply {
+                setParent(arFragment.arSceneView.scene)
+            }
 
             ViewRenderable.builder()
                 .setView(context, R.layout.renderable_block)
                 .build()
-                .thenAccept { renderable ->
-                    val transformableNode = TransformableNode(arFragment.transformationSystem)
-                    transformableNode.setParent(anchorNode)
-                    transformableNode.renderable = renderable
+                .thenAccept { modelObject ->
+                    val transformableNode = TransformableNode(arFragment.transformationSystem).apply {
+                        renderable = modelObject
+                        localRotation = Quaternion.axisAngle(Vector3(1.0f, 0f, 0f), 270f)
+                    }
                     transformableNode.translationController.isEnabled = false
+                    anchorNode.addChild(transformableNode)
 
-                    val rvBlocks = renderable?.view?.findViewById<RecyclerView>(R.id.rvBlocks)
+                    val rvBlocks = modelObject?.view?.findViewById<RecyclerView>(R.id.rvBlocks)
                     val notes = mutableListOf<Block>()
                     notes.add(MethodBlock(adapters.size))
                     val adapter = BlockAdapter(notes) {
@@ -63,25 +69,25 @@ class MainFragment : Fragment() {
                     rvBlocks?.adapter = adapter
                     rvBlocks?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
-                    renderable?.view?.findViewById<Button>(R.id.btnAddNote)?.setOnClickListener {
+                    modelObject?.view?.findViewById<Button>(R.id.btnAddNote)?.setOnClickListener {
                         NotePickerDialogFragment.newInstance().show(fragmentManager!!) {
                             notes.add(it)
                             adapter.notifyDataSetChanged()
                         }
                     }
-                    renderable?.view?.findViewById<Button>(R.id.btnAddFor)?.setOnClickListener {
+                    modelObject?.view?.findViewById<Button>(R.id.btnAddFor)?.setOnClickListener {
                         ForPickerDialogFragment.newInstance().show(fragmentManager!!) {
                             notes.add(it)
                             adapter.notifyDataSetChanged()
                         }
                     }
-                    renderable?.view?.findViewById<Button>(R.id.btnAddIf)?.setOnClickListener {
+                    modelObject?.view?.findViewById<Button>(R.id.btnAddIf)?.setOnClickListener {
                         IfPickerDialogFragment.newInstance().show(fragmentManager!!) {
                             notes.add(it)
                             adapter.notifyDataSetChanged()
                         }
                     }
-                    renderable?.view?.findViewById<Button>(R.id.btnAddMethod)?.setOnClickListener {
+                    modelObject?.view?.findViewById<Button>(R.id.btnAddMethod)?.setOnClickListener {
                         val b = AlertDialog.Builder(it.context)
                         b.setTitle("Method")
                         val arr = arrayListOf<CharSequence>()
