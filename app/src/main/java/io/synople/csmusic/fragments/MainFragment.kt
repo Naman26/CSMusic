@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.ar.sceneform.AnchorNode
@@ -20,10 +21,8 @@ import io.synople.csmusic.adapters.BlockAdapter
 import io.synople.csmusic.fragments.pickerdialogfragments.ForPickerDialogFragment
 import io.synople.csmusic.fragments.pickerdialogfragments.IfPickerDialogFragment
 import io.synople.csmusic.fragments.pickerdialogfragments.NotePickerDialogFragment
-import io.synople.csmusic.model.Block
-import io.synople.csmusic.model.ForBlock
-import io.synople.csmusic.model.IfBlock
-import io.synople.csmusic.model.NoteBlock
+import io.synople.csmusic.model.*
+import kotlinx.android.synthetic.main.block_if.*
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment() {
@@ -49,15 +48,14 @@ class MainFragment : Fragment() {
                 .setView(context, R.layout.renderable_block)
                 .build()
                 .thenAccept { renderable ->
-
-
                     val transformableNode = TransformableNode(arFragment.transformationSystem)
                     transformableNode.setParent(anchorNode)
                     transformableNode.renderable = renderable
+                    transformableNode.translationController.isEnabled = false
 
                     val rvBlocks = renderable?.view?.findViewById<RecyclerView>(R.id.rvBlocks)
                     val notes = mutableListOf<Block>()
-                    notes.add(NoteBlock())
+                    notes.add(MethodBlock(adapters.size))
                     val adapter = BlockAdapter(notes) {
                         print(it.toString())
                     }
@@ -71,7 +69,6 @@ class MainFragment : Fragment() {
                             adapter.notifyDataSetChanged()
                         }
                     }
-
                     renderable?.view?.findViewById<Button>(R.id.btnAddFor)?.setOnClickListener {
                         ForPickerDialogFragment.newInstance().show(fragmentManager!!) {
                             notes.add(it)
@@ -79,17 +76,39 @@ class MainFragment : Fragment() {
                         }
                     }
                     renderable?.view?.findViewById<Button>(R.id.btnAddIf)?.setOnClickListener {
-                        //                        IfPickerDialogFragment.newInstance().show(fragmentManager!!) {
-//                            notes.add(it)
-//                            adapter.notifyDataSetChanged()
-//                        }
-                        notes.add(IfBlock(mutableListOf(NoteBlock(), NoteBlock(), NoteBlock())))
-                        adapter.notifyDataSetChanged()
+                        IfPickerDialogFragment.newInstance().show(fragmentManager!!) {
+                            notes.add(it)
+                            adapter.notifyDataSetChanged()
+                        }
+                    }
+                    renderable?.view?.findViewById<Button>(R.id.btnAddMethod)?.setOnClickListener {
+                        val b = AlertDialog.Builder(it.context)
+                        b.setTitle("Method")
+                        val arr = arrayListOf<CharSequence>()
+                        for (x in 0 until adapters.size) {
+                            arr.add("M$x")
+                        }
+                        b.setItems(arr.toTypedArray()) { dialog, which ->
+                            dialog.dismiss()
+                            notes.add(MethodBlock(which))
+                            adapter.notifyDataSetChanged()
+                        }
+                        b.show()
                     }
                 }
         }
 
         ivPlay.setOnClickListener {
+            // pre-process for method
+            adapters[0].blocks.forEach {
+                if (it is MethodBlock) {
+                    val methodNum = it.methodNum
+                    it.list = adapters[methodNum].blocks
+                }
+            }
+
+            (adapters[0].blocks[0] as MethodBlock).list = mutableListOf()
+
             val musicPlayer = MusicPlayer(context!!) {
                 adapters[0].blocks.forEach { block ->
                     if (block.colorStatus == 2) block.colorStatus = 1

@@ -28,4 +28,8 @@ public class MethodBlock extends Block {
     public int size() {
         return list.size();
     }
+
+    public String toString() {
+        return "M" + methodNum;
+    }
 }

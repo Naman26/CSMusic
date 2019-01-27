@@ -11,7 +11,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:layout_marginEnd="4dp" />
+        android:layout_marginEnd="4dp"
+        android:layout_toStartOf="@+id/btnAddNote"
+        android:scrollbars="horizontal" />
 
     <Button
         android:id="@+id/btnAddNote"
@@ -30,9 +32,9 @@
         android:id="@+id/btnAddFor"
         android:layout_width="18dp"
         android:layout_height="10dp"
+        android:layout_alignEnd="@+id/btnAddNote"
         android:layout_alignBottom="@+id/rvBlocks"
         android:layout_marginBottom="1dp"
-        android:layout_alignEnd="@+id/btnAddNote"
         android:background="@color/colorPrimaryDark"
         android:text="for"
         android:textAllCaps="false"
@@ -52,5 +54,19 @@
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textSize="6sp" />
+
+    <Button
+        android:id="@+id/btnAddMethod"
+        android:layout_width="18dp"
+        android:layout_height="10dp"
+        android:layout_alignBottom="@+id/rvBlocks"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="1dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="method"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="4sp" />
 
 </RelativeLayout>
