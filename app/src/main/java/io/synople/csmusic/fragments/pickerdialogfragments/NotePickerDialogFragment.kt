@@ -32,42 +32,107 @@ class NotePickerDialogFragment : DialogFragment() {
         tvLengthValue.text = "q"
 
         tvKeyPlus.setOnClickListener {
-
+            when (tvKeyValue.text) {
+                "C" -> tvKeyValue.text = "D"
+                "D" -> tvKeyValue.text = "G"
+                "G" -> tvKeyValue.text = "C"
+            }
         }
         tvKeyMinus.setOnClickListener {
-
+            when (tvKeyValue.text) {
+                "C" -> tvKeyValue.text = "G"
+                "D" -> tvKeyValue.text = "C"
+                "G" -> tvKeyValue.text = "D"
+            }
         }
 
         tvNotePlus.setOnClickListener {
+            when (tvKeyValue.text) {
+                "C" -> {
+                    var indexOf = NoteBlock.keyC.indexOf(tvKeyValue.text)
+                    indexOf++
+                    if (indexOf > NoteBlock.keyC.size) indexOf = 0
 
+                    tvKeyValue.text = NoteBlock.keyC[indexOf]
+                }
+                "D" -> {
+                    var indexOf = NoteBlock.keyD.indexOf(tvKeyValue.text)
+                    indexOf++
+                    if (indexOf > NoteBlock.keyD.size) indexOf = 0
+
+                    tvKeyValue.text = NoteBlock.keyD[indexOf]
+                }
+                "G" -> {
+                    var indexOf = NoteBlock.keyG.indexOf(tvKeyValue.text)
+                    indexOf++
+                    if (indexOf > NoteBlock.keyG.size) indexOf = 0
+
+                    tvKeyValue.text = NoteBlock.keyG[indexOf]
+                }
+            }
         }
         tvNoteMinus.setOnClickListener {
+            when (tvKeyValue.text) {
+                "C" -> {
+                    var indexOf = NoteBlock.keyC.indexOf(tvKeyValue.text)
+                    indexOf--
+                    if (indexOf > NoteBlock.keyC.size) indexOf = 0
 
+                    tvKeyValue.text = NoteBlock.keyC[indexOf]
+                }
+                "D" -> {
+                    var indexOf = NoteBlock.keyD.indexOf(tvKeyValue.text)
+                    indexOf--
+                    if (indexOf > NoteBlock.keyD.size) indexOf = 0
+
+                    tvKeyValue.text = NoteBlock.keyD[indexOf]
+                }
+                "G" -> {
+                    var indexOf = NoteBlock.keyG.indexOf(tvKeyValue.text)
+                    indexOf--
+                    if (indexOf > NoteBlock.keyG.size) indexOf = 0
+
+                    tvKeyValue.text = NoteBlock.keyG[indexOf]
+                }
+            }
         }
 
         tvOctavePlus.setOnClickListener {
-
+            var num = tvOctaveValue.text.toString().toInt()
+            num++
+            if (num > 5) tvOctaveValue.text = "3"
         }
         tvOctaveMinus.setOnClickListener {
-
+            var num = tvOctaveValue.text.toString().toInt()
+            num--
+            if (num < 0) tvOctaveValue.text = "5"
         }
 
         tvLengthPlus.setOnClickListener {
+            var indexOf = NoteBlock.countStrings.indexOf(tvLengthValue.text.toString())
+            indexOf++
+            if (indexOf >= NoteBlock.countStrings.size) indexOf = 0
 
+            tvLengthValue.text = NoteBlock.countStrings[indexOf]
         }
         tvLengthMinus.setOnClickListener {
+            var indexOf = NoteBlock.countStrings.indexOf(tvLengthValue.text.toString())
+            indexOf--
+            if (indexOf >= NoteBlock.countStrings.size) indexOf = NoteBlock.countStrings.size - 1
 
+            tvLengthValue.text = NoteBlock.countStrings[indexOf]
         }
 
         btnAdd.setOnClickListener {
-            onFinish(
-                NoteBlock(
-                    tvKeyValue.text.toString().toInt(),
-                    tvNoteValue.text.toString().toInt(),
-                    tvOctaveValue.text.toString().toInt(),
-                    tvLengthValue.text.toString().toInt()
-                )
-            )
+            onFinish(NoteBlock())
+//            onFinish(
+//                NoteBlock(
+//                    tvKeyValue.text.toString().toInt(),
+//                    tvNoteValue.text.toString().toInt(),
+//                    tvOctaveValue.text.toString().toInt(),
+//                    tvLengthValue.text.toString().toInt()
+//                )
+//            )
             dismiss()
         }
     }

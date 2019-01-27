@@ -1,5 +1,6 @@
 package io.synople.csmusic.fragments
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -79,7 +80,6 @@ class MainFragment : Fragment() {
                             adapter.notifyDataSetChanged()
                         }
                     }
-
                     renderable?.view?.findViewById<Button>(R.id.btnAddIf)?.setOnClickListener {
                         IfPickerDialogFragment.newInstance().show(fragmentManager!!) {
                             notes.add(it)
