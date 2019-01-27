@@ -13,6 +13,6 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.mainFrameLayout, MainFragment.newInstance())
-            .commit();
+            .commit()
     }
 }
