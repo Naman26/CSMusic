@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.ar.sceneform.AnchorNode
@@ -92,6 +93,12 @@ class MainFragment : Fragment() {
             val musicPlayer = MusicPlayer(context!!)
             val p = MusicCompiler(adapters[0].blocks).compile()
             musicPlayer.play(p)
+        }
+
+        ivDownload.setOnClickListener {
+            SocialDialogFragment.newInstance().show(fragmentManager!!) {
+                Toast.makeText(context, it.music.toString(), Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
