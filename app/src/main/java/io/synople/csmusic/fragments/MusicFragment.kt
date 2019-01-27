@@ -2,22 +2,19 @@ package io.synople.csmusic.fragments
 
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import io.synople.csmusic.MainActivity
+import androidx.fragment.app.FragmentManager
 import io.synople.csmusic.MusicPlayer
 
 import io.synople.csmusic.R
-import io.synople.csmusic.model.Block
-import io.synople.csmusic.model.IfBlock
-import io.synople.csmusic.model.MethodBlock
+import io.synople.csmusic.fragments.pickerdialogfragments.NotePickerDialogFragment
 import io.synople.csmusic.model.NoteBlock
+import kotlinx.android.synthetic.main.dialog_fragment_note_picker.*
 import kotlinx.android.synthetic.main.fragment_music.*
-import java.lang.Exception
 import java.util.*
 
 
@@ -31,26 +28,14 @@ class MusicFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        playAudio.setOnClickListener {
-            val noteBlockList = Arrays.asList(
-                NoteBlock(0, 4, 0, 0),
-                NoteBlock(0, 1, 1, 0),
-                NoteBlock(3,0),
-                NoteBlock(0, 6, 1, 0),
-                NoteBlock(0, 5, 1, 0),
-                NoteBlock(3,1),
-                NoteBlock(0, 6, 1, 0),
-                NoteBlock(0, 1, 1, 0),
-                NoteBlock(3,2),
-                NoteBlock(0, 6, 1, 0),
-                NoteBlock(0, 1, 1, 0),
-                NoteBlock(3,3)
-            )
+        val fm = fragmentManager
+        val notePickerDialog = NotePickerDialogFragment()
 
-            val player = MusicPlayer(context!!)
-            player.play(noteBlockList)
+        notePickerDialog.show(fm!!) {
+
         }
     }
+
 
     companion object {
         @JvmStatic
