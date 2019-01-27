@@ -127,6 +127,10 @@ class MainFragment : Fragment() {
             val p = MusicCompiler(adapters[0].blocks).compile()
             musicPlayer.play(p)
         }
+
+        ivSocial.setOnClickListener {
+            
+        }
     }
 
     companion object {

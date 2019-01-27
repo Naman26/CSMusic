@@ -23,4 +23,13 @@
         android:layout_marginBottom="18dp"
         android:src="@drawable/play" />
 
+    <ImageView
+        android:id="@+id/ivSocial"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="18dp"
+        android:src="@drawable/person" />
+
 </RelativeLayout>
