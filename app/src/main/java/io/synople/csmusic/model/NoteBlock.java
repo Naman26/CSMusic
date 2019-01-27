@@ -8,13 +8,13 @@ public class NoteBlock extends Block {
     Boolean isRandom;
 
     //Key of C
-    String[] keyC = {"c", "d", "e", "f", "g", "a", "b", "c"};
+    public static final String[] keyC = {"c", "d", "e", "f", "g", "a", "b", "c"};
 
     //Key of D
-    String[] keyD = {"d", "e", "f#", "g", "a", "b", "c#", "d"}; //c#, f#
+    public static final String[] keyD = {"d", "e", "f#", "g", "a", "b", "c#", "d"}; //c#, f#
 
     //Key of G
-    String[] keyG = {"g", "a", "b", "c", "d", "e", "f#", "g"}; // f#
+    public static final String[] keyG = {"g", "a", "b", "c", "d", "e", "f#", "g"}; // f#
 
     //Rests
     String[] keyR = {"r"};
@@ -26,7 +26,7 @@ public class NoteBlock extends Block {
     String[] octStrings = {"3", "4", "5", "6", ""};
 
     //all lengths
-    String[] countStrings = {"i", "q", "h", "w"};
+    public static final String[] countStrings = {"i", "q", "h", "w"};
 
     private int key, nameNum, oct, counts;
 
@@ -43,7 +43,7 @@ public class NoteBlock extends Block {
         if (key == 3) {
             nameNum = 0;
             oct = 4;
-        } else {
+        } else {2
             nameNum = rand.nextInt(8);
             oct = rand.nextInt(3);
             if (nameNum == 7) oct++;
