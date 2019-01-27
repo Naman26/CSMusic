@@ -27,7 +27,7 @@ class NotePickerDialogFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         tvKeyValue.text = "C"
-        tvNoteValue.text = "C"
+        tvNoteValue.text = "c"
         tvOctaveValue.text = "3"
         tvLengthValue.text = "q"
 
@@ -49,25 +49,28 @@ class NotePickerDialogFragment : DialogFragment() {
         tvNotePlus.setOnClickListener {
             when (tvKeyValue.text) {
                 "C" -> {
-                    var indexOf = NoteBlock.keyC.indexOf(tvKeyValue.text)
+                    var indexOf = NoteBlock.keyC.indexOf(tvNoteValue.text)
                     indexOf++
-                    if (indexOf > NoteBlock.keyC.size) indexOf = 0
+                    tvNoteValue.text = NoteBlock.keyC[indexOf]
 
-                    tvKeyValue.text = NoteBlock.keyC[indexOf]
+                    if (indexOf > NoteBlock.keyC.size) indexOf = 0
+                    tvNoteValue.text = NoteBlock.keyC[indexOf]
                 }
                 "D" -> {
-                    var indexOf = NoteBlock.keyD.indexOf(tvKeyValue.text)
+                    var indexOf = NoteBlock.keyD.indexOf(tvNoteValue.text)
                     indexOf++
+                    tvNoteValue.text = NoteBlock.keyD[indexOf]
                     if (indexOf > NoteBlock.keyD.size) indexOf = 0
 
-                    tvKeyValue.text = NoteBlock.keyD[indexOf]
+                    tvNoteValue.text = NoteBlock.keyD[indexOf]
                 }
                 "G" -> {
-                    var indexOf = NoteBlock.keyG.indexOf(tvKeyValue.text)
+                    var indexOf = NoteBlock.keyG.indexOf(tvNoteValue.text)
                     indexOf++
+                    tvNoteValue.text = NoteBlock.keyG[indexOf]
                     if (indexOf > NoteBlock.keyG.size) indexOf = 0
 
-                    tvKeyValue.text = NoteBlock.keyG[indexOf]
+                    tvNoteValue.text = NoteBlock.keyG[indexOf]
                 }
             }
         }
@@ -76,23 +79,24 @@ class NotePickerDialogFragment : DialogFragment() {
                 "C" -> {
                     var indexOf = NoteBlock.keyC.indexOf(tvKeyValue.text)
                     indexOf--
-                    if (indexOf > NoteBlock.keyC.size) indexOf = 0
+                    if (indexOf <0) indexOf = 7
 
-                    tvKeyValue.text = NoteBlock.keyC[indexOf]
+                    tvNoteValue.text = NoteBlock.keyC[indexOf]
                 }
                 "D" -> {
-                    var indexOf = NoteBlock.keyD.indexOf(tvKeyValue.text)
+                    var indexOf = NoteBlock.keyD.indexOf(tvNoteValue.text)
                     indexOf--
-                    if (indexOf > NoteBlock.keyD.size) indexOf = 0
+                    if (indexOf <0) indexOf = 7
 
-                    tvKeyValue.text = NoteBlock.keyD[indexOf]
+                    tvNoteValue.text = NoteBlock.keyD[indexOf]
+
                 }
                 "G" -> {
-                    var indexOf = NoteBlock.keyG.indexOf(tvKeyValue.text)
+                    var indexOf = NoteBlock.keyG.indexOf(tvNoteValue.text)
                     indexOf--
-                    if (indexOf > NoteBlock.keyG.size) indexOf = 0
+                    if (indexOf <0) indexOf = 7
 
-                    tvKeyValue.text = NoteBlock.keyG[indexOf]
+                    tvNoteValue.text = NoteBlock.keyG[indexOf]
                 }
             }
         }
@@ -100,12 +104,18 @@ class NotePickerDialogFragment : DialogFragment() {
         tvOctavePlus.setOnClickListener {
             var num = tvOctaveValue.text.toString().toInt()
             num++
-            if (num > 5) tvOctaveValue.text = "3"
+            tvOctaveValue.text = num.toString()
+            if (num > 5) num = 3
+            tvOctaveValue.text = num.toString()
         }
+
         tvOctaveMinus.setOnClickListener {
             var num = tvOctaveValue.text.toString().toInt()
-            num--
-            if (num < 0) tvOctaveValue.text = "5"
+
+            tvOctaveValue.text = num.toString()
+            if (num > 3) num-- else num=5
+            tvOctaveValue.text = num.toString()
+
         }
 
         tvLengthPlus.setOnClickListener {
@@ -117,22 +127,23 @@ class NotePickerDialogFragment : DialogFragment() {
         }
         tvLengthMinus.setOnClickListener {
             var indexOf = NoteBlock.countStrings.indexOf(tvLengthValue.text.toString())
-            indexOf--
+
+            if (indexOf > 0) indexOf-- else indexOf = NoteBlock.countStrings.size - 1
+
             if (indexOf >= NoteBlock.countStrings.size) indexOf = NoteBlock.countStrings.size - 1
 
             tvLengthValue.text = NoteBlock.countStrings[indexOf]
         }
 
         btnAdd.setOnClickListener {
-            onFinish(NoteBlock())
-//            onFinish(
-//                NoteBlock(
-//                    tvKeyValue.text.toString().toInt(),
-//                    tvNoteValue.text.toString().toInt(),
-//                    tvOctaveValue.text.toString().toInt(),
-//                    tvLengthValue.text.toString().toInt()
-//                )
-//            )
+            onFinish(
+                NoteBlock(
+                    tvKeyValue.text.toString().toInt(),
+                    tvNoteValue.text.toString().toInt(),
+                    tvOctaveValue.text.toString().toInt(),
+                    tvLengthValue.text.toString().toInt()
+                )
+            )
             dismiss()
         }
     }

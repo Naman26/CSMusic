@@ -1,6 +1,5 @@
 package io.synople.csmusic.fragments
 
-import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -22,8 +21,6 @@ import io.synople.csmusic.fragments.pickerdialogfragments.ForPickerDialogFragmen
 import io.synople.csmusic.fragments.pickerdialogfragments.IfPickerDialogFragment
 import io.synople.csmusic.fragments.pickerdialogfragments.NotePickerDialogFragment
 import io.synople.csmusic.model.Block
-import io.synople.csmusic.model.ForBlock
-import io.synople.csmusic.model.IfBlock
 import io.synople.csmusic.model.NoteBlock
 import kotlinx.android.synthetic.main.fragment_main.*
 
