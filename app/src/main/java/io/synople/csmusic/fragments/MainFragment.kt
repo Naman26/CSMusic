@@ -80,10 +80,12 @@ class MainFragment : Fragment() {
                         }
                     }
                     renderable?.view?.findViewById<Button>(R.id.btnAddIf)?.setOnClickListener {
-                        IfPickerDialogFragment.newInstance().show(fragmentManager!!) {
-                            notes.add(it)
-                            adapter.notifyDataSetChanged()
-                        }
+                        //                        IfPickerDialogFragment.newInstance().show(fragmentManager!!) {
+//                            notes.add(it)
+//                            adapter.notifyDataSetChanged()
+//                        }
+                        notes.add(IfBlock(mutableListOf(NoteBlock(), NoteBlock(), NoteBlock())))
+                        adapter.notifyDataSetChanged()
                     }
                 }
         }

@@ -10,30 +10,20 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="if (" />
+        android:text="Play " />
+
+    <Button
+        android:id="@+id/btnAction"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" if " />
 
     <Button
         android:id="@+id/btnExpression"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=") " />
-
-    <Button
-        android:id="@+id/btnTaskA"
-        android:layout_width="20dp"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" else " />
-
-    <Button
-        android:id="@+id/btnTaskB"
         android:layout_width="20dp"
         android:layout_height="wrap_content" />
 

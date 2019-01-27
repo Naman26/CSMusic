@@ -45,7 +45,12 @@ class BlockAdapter(val blocks: List<Block>, private val itemClick: (Block) -> Un
         }
 
         fun bindIf(ifBlock: IfBlock) {
-
+            btnAction.setOnClickListener {
+                // TODO: Show possible actions (chord or random)
+            }
+            btnExpression.setOnClickListener {
+                // TODO: Let user add whatever.
+            }
         }
 
         fun bindMethod(methodBlock: MethodBlock) {

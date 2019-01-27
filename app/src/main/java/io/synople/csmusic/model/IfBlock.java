@@ -19,12 +19,12 @@ public class IfBlock extends Block {
         // if statement followed by a chord
         this();
 
-        if (list.size() == 3) {
+        if (listIn.size() == 3) {
             list = listIn;
             expr = expression[0];
         }
         // if statement followed by a rando
-        else if (list.size() == 1) {
+        else if (listIn.size() == 1) {
             list = listIn;
             if (list.get(0).isRandom) {
                 expr = expression[1];
