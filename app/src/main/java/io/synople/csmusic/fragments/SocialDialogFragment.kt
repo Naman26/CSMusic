@@ -41,10 +41,9 @@ class SocialDialogFragment : DialogFragment() {
 
         val adapter = ProfileViewAdapter(profileList, onPlayClick = {
             val player = MusicPlayer(context!!) {
-                
+
             }
             player.play(it.music)
-
         }, onDownloadClick = {
             onFinish(it)
             dismiss()
@@ -53,7 +52,7 @@ class SocialDialogFragment : DialogFragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
     }
 
-    fun prepareData() {
+    private fun prepareData() {
         var item = Profile(
             "Harnoor", Arrays.asList(
                 Arrays.asList(NoteBlock(0, 4, 0, 0)),
@@ -123,7 +122,6 @@ class SocialDialogFragment : DialogFragment() {
         )
         profileList.add(item)
     }
-
 
     companion object {
         @JvmStatic

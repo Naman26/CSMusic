@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import io.synople.csmusic.MainActivity
+import io.synople.csmusic.activities.MainActivity
 import io.synople.csmusic.fragments.pickerdialogfragments.ForPickerDialogFragment
 import io.synople.csmusic.fragments.pickerdialogfragments.NotePickerDialogFragment
 import io.synople.csmusic.model.*
@@ -132,7 +132,6 @@ class BlockAdapter(val blocks: List<Block>, private val itemClick: (Block) -> Un
             else -> super.getItemViewType(position)
         }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BlockAdapter.ViewHolder {
         return ViewHolder(
             LayoutInflater.from(parent.context).inflate(
@@ -159,7 +158,6 @@ class BlockAdapter(val blocks: List<Block>, private val itemClick: (Block) -> Un
             }
         }
     }
-
 
     override fun getItemCount() = blocks.size
 }

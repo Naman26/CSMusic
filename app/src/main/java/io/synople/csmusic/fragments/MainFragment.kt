@@ -139,12 +139,6 @@ class MainFragment : Fragment() {
         }
     }
 
-    fun getScreenCenter(): Vector3 {
-        val vw = activity!!.findViewById<View>(android.R.id.content)
-        return Vector3(vw.width / 2f, vw.height / 2f, 0f)
-    }
-
-
     companion object {
         @JvmStatic
         fun newInstance() = MainFragment()

@@ -33,7 +33,6 @@ class NoteBlockAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.block_note, parent, false), itemClick)
 
-
     override fun onBindViewHolder(holder: NoteBlockAdapter.ViewHolder, position: Int) {
         holder.bindNote(noteBlocks[position])
     }

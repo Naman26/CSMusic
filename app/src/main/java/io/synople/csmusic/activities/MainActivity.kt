@@ -1,7 +1,8 @@
-package io.synople.csmusic
+package io.synople.csmusic.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import io.synople.csmusic.R
 import io.synople.csmusic.fragments.MainFragment
 
 class MainActivity : AppCompatActivity() {
