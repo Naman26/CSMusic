@@ -7,8 +7,8 @@ import java.util.List;
 
 public class MusicCompiler {
     // This class should essentially be our compiler.
-    List<Block> blocks;
-    List<List<NoteBlock>> notes;
+    private List<Block> blocks;
+    private List<List<NoteBlock>> notes;
 
     public MusicCompiler(List<Block> blocksIn) {
         blocks = blocksIn;

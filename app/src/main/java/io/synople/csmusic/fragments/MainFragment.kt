@@ -1,20 +1,13 @@
 package io.synople.csmusic.fragments
 
 import android.os.Bundle
-import android.os.SystemClock
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.ar.core.Frame
 import com.google.ar.sceneform.AnchorNode
-import com.google.ar.sceneform.Node
-import com.google.ar.sceneform.collision.Ray
 import com.google.ar.sceneform.math.Quaternion
 import com.google.ar.sceneform.math.Vector3
 import com.google.ar.sceneform.rendering.ViewRenderable
@@ -22,15 +15,15 @@ import com.google.ar.sceneform.ux.ArFragment
 import com.google.ar.sceneform.ux.TransformableNode
 import io.synople.csmusic.MusicCompiler
 import io.synople.csmusic.MusicPlayer
-
 import io.synople.csmusic.R
 import io.synople.csmusic.adapters.BlockAdapter
 import io.synople.csmusic.fragments.pickerdialogfragments.ForPickerDialogFragment
 import io.synople.csmusic.fragments.pickerdialogfragments.IfPickerDialogFragment
 import io.synople.csmusic.fragments.pickerdialogfragments.NotePickerDialogFragment
-import io.synople.csmusic.model.*
-import kotlinx.android.synthetic.main.block_if.*
+import io.synople.csmusic.model.Block
+import io.synople.csmusic.model.MethodBlock
 import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.android.synthetic.main.renderable_block.*
 
 class MainFragment : Fragment() {
 
@@ -63,35 +56,34 @@ class MainFragment : Fragment() {
                     transformableNode.translationController.isEnabled = false
                     anchorNode.addChild(transformableNode)
 
-                    val rvBlocks = modelObject?.view?.findViewById<RecyclerView>(R.id.rvBlocks)
                     val notes = mutableListOf<Block>()
                     notes.add(MethodBlock(adapters.size))
                     val adapter = BlockAdapter(notes) {
                         print(it.toString())
                     }
                     adapters.add(adapter)
-                    rvBlocks?.adapter = adapter
-                    rvBlocks?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                    rvBlocks.adapter = adapter
+                    rvBlocks.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
-                    modelObject?.view?.findViewById<Button>(R.id.btnAddNote)?.setOnClickListener {
+                    btnAddNote.setOnClickListener {
                         NotePickerDialogFragment.newInstance().show(fragmentManager!!) {
                             notes.add(it)
                             adapter.notifyDataSetChanged()
                         }
                     }
-                    modelObject?.view?.findViewById<Button>(R.id.btnAddFor)?.setOnClickListener {
+                    btnAddFor.setOnClickListener {
                         ForPickerDialogFragment.newInstance().show(fragmentManager!!) {
                             notes.add(it)
                             adapter.notifyDataSetChanged()
                         }
                     }
-                    modelObject?.view?.findViewById<Button>(R.id.btnAddIf)?.setOnClickListener {
+                    btnAddIf.setOnClickListener {
                         IfPickerDialogFragment.newInstance().show(fragmentManager!!) {
                             notes.add(it)
                             adapter.notifyDataSetChanged()
                         }
                     }
-                    modelObject?.view?.findViewById<Button>(R.id.btnAddMethod)?.setOnClickListener {
+                    btnAddMethod.setOnClickListener {
                         val b = AlertDialog.Builder(it.context)
                         b.setTitle("Method")
                         val arr = arrayListOf<CharSequence>()
@@ -134,7 +126,7 @@ class MainFragment : Fragment() {
 
         ivSocial.setOnClickListener {
             SocialDialogFragment.newInstance().show(fragmentManager!!) {
-
+                // TODO: Next user tap on arPlane places it.music
             }
         }
     }

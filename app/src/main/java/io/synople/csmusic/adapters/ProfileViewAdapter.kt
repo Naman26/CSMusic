@@ -21,7 +21,7 @@ class ProfileViewAdapter(
         private val onDownloadClick: (Profile) -> Unit
     ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
         fun bindItems(item: Profile) {
-            tvName.text = item.studentName
+            tvName.text = item.name
 
             ivPlay.setOnClickListener { onPlayClick(item) }
             ivDownload.setOnClickListener { onDownloadClick(item) }

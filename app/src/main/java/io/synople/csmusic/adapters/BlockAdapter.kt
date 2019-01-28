@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.synople.csmusic.activities.MainActivity
@@ -11,11 +12,10 @@ import io.synople.csmusic.fragments.pickerdialogfragments.ForPickerDialogFragmen
 import io.synople.csmusic.fragments.pickerdialogfragments.NotePickerDialogFragment
 import io.synople.csmusic.model.*
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.block_note.*
 import kotlinx.android.synthetic.main.block_for.*
 import kotlinx.android.synthetic.main.block_if.*
 import kotlinx.android.synthetic.main.block_method.*
-import androidx.appcompat.app.AlertDialog
+import kotlinx.android.synthetic.main.block_note.*
 
 
 private const val FOR_BLOCK = 0
@@ -23,7 +23,7 @@ private const val IF_BLOCK = 1
 private const val METHOD_BLOCK = 2
 private const val NOTE_BLOCK = 3
 
-class BlockAdapter(val blocks: List<Block>, private val itemClick: (Block) -> Unit) :
+class BlockAdapter(val blocks: MutableList<Block>, private val itemClick: (Block) -> Unit) :
     RecyclerView.Adapter<BlockAdapter.ViewHolder>() {
 
     class ViewHolder(override val containerView: View, private val itemClick: (Block) -> Unit) :
@@ -79,7 +79,8 @@ class BlockAdapter(val blocks: List<Block>, private val itemClick: (Block) -> Un
                     dialog.dismiss()
                     if (which == 0) {
                         ifBlock.list = mutableListOf(NoteBlock(), NoteBlock(), NoteBlock())
-                        btnAction.text = "${ifBlock.list[0].fileName}\n${ifBlock.list[1].fileName}${ifBlock.list[2].fileName}"
+                        btnAction.text =
+                            "${ifBlock.list[0].fileName}\n${ifBlock.list[1].fileName}${ifBlock.list[2].fileName}"
                     } else {
                         val noteBlock = NoteBlock()
                         noteBlock.isRandom = true

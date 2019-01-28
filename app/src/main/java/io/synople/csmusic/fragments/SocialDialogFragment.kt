@@ -5,15 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import io.synople.csmusic.MusicCompiler
 import io.synople.csmusic.MusicPlayer
-
 import io.synople.csmusic.R
 import io.synople.csmusic.adapters.ProfileViewAdapter
+import io.synople.csmusic.model.Block
 import io.synople.csmusic.model.NoteBlock
 import io.synople.csmusic.model.Profile
 import kotlinx.android.synthetic.main.fragment_social_dialog.*
@@ -25,7 +24,7 @@ class SocialDialogFragment : DialogFragment() {
     private lateinit var onFinish: (Profile) -> Unit
     private lateinit var profileList: MutableList<Profile>
 
-    public fun show(fm: FragmentManager, onFinish: (Profile) -> Unit) {
+    fun show(fm: FragmentManager, onFinish: (Profile) -> Unit) {
         this.onFinish = onFinish
         show(fm, "SocialDialogFragment")
     }
@@ -43,7 +42,7 @@ class SocialDialogFragment : DialogFragment() {
             val player = MusicPlayer(context!!) {
 
             }
-            player.play(it.music)
+            player.play(MusicCompiler(it.music).compile())
         }, onDownloadClick = {
             onFinish(it)
             dismiss()
@@ -55,69 +54,69 @@ class SocialDialogFragment : DialogFragment() {
     private fun prepareData() {
         var item = Profile(
             "Harnoor", Arrays.asList(
-                Arrays.asList(NoteBlock(0, 4, 0, 0)),
-                Arrays.asList(NoteBlock(0, 1, 1, 0)),
-                Arrays.asList(NoteBlock(3, 0)),
-                Arrays.asList(NoteBlock(0, 6, 1, 0)),
-                Arrays.asList(NoteBlock(0, 5, 1, 0)),
-                Arrays.asList(NoteBlock(3, 1)),
-                Arrays.asList(NoteBlock(0, 6, 1, 0)),
-                Arrays.asList(NoteBlock(0, 1, 1, 0)),
-                Arrays.asList(NoteBlock(3, 2)),
-                Arrays.asList(NoteBlock(0, 6, 1, 0)),
-                Arrays.asList(NoteBlock(0, 1, 1, 0)),
-                Arrays.asList(NoteBlock(3, 3))
+                NoteBlock(0, 4, 0, 0) as Block,
+                NoteBlock(0, 1, 1, 0) as Block,
+                NoteBlock(3, 0) as Block,
+                NoteBlock(0, 6, 1, 0) as Block,
+                NoteBlock(0, 5, 1, 0) as Block,
+                NoteBlock(3, 1) as Block,
+                NoteBlock(0, 6, 1, 0) as Block,
+                NoteBlock(0, 1, 1, 0) as Block,
+                NoteBlock(3, 2) as Block,
+                NoteBlock(0, 6, 1, 0) as Block,
+                NoteBlock(0, 1, 1, 0) as Block,
+                NoteBlock(3, 3) as Block
             )
         )
         profileList.add(item)
         item = Profile(
             "Jason", Arrays.asList(
-                Arrays.asList(NoteBlock(0, 4, 0, 0)),
-                Arrays.asList(NoteBlock(0, 1, 1, 0)),
-                Arrays.asList(NoteBlock(3, 0)),
-                Arrays.asList(NoteBlock(0, 6, 1, 0)),
-                Arrays.asList(NoteBlock(0, 5, 1, 0)),
-                Arrays.asList(NoteBlock(3, 1)),
-                Arrays.asList(NoteBlock(0, 6, 1, 0)),
-                Arrays.asList(NoteBlock(0, 1, 1, 0)),
-                Arrays.asList(NoteBlock(3, 2)),
-                Arrays.asList(NoteBlock(0, 6, 1, 0)),
-                Arrays.asList(NoteBlock(0, 1, 1, 0)),
-                Arrays.asList(NoteBlock(3, 3))
+                NoteBlock(0, 4, 0, 0) as Block,
+                NoteBlock(0, 1, 1, 0) as Block,
+                NoteBlock(3, 0) as Block,
+                NoteBlock(0, 6, 1, 0) as Block,
+                NoteBlock(0, 5, 1, 0) as Block,
+                NoteBlock(3, 1) as Block,
+                NoteBlock(0, 6, 1, 0) as Block,
+                NoteBlock(0, 1, 1, 0) as Block,
+                NoteBlock(3, 2) as Block,
+                NoteBlock(0, 6, 1, 0) as Block,
+                NoteBlock(0, 1, 1, 0) as Block,
+                NoteBlock(3, 3) as Block
             )
         )
         profileList.add(item)
         item = Profile(
             "Carl", Arrays.asList(
-                Arrays.asList(NoteBlock(0, 4, 0, 0)),
-                Arrays.asList(NoteBlock(0, 1, 1, 0)),
-                Arrays.asList(NoteBlock(3, 0)),
-                Arrays.asList(NoteBlock(0, 6, 1, 0)),
-                Arrays.asList(NoteBlock(0, 5, 1, 0)),
-                Arrays.asList(NoteBlock(3, 1)),
-                Arrays.asList(NoteBlock(0, 6, 1, 0)),
-                Arrays.asList(NoteBlock(0, 1, 1, 0)),
-                Arrays.asList(NoteBlock(3, 2)),
-                Arrays.asList(NoteBlock(0, 6, 1, 0)),
-                Arrays.asList(NoteBlock(0, 1, 1, 0)),
-                Arrays.asList(NoteBlock(3, 3))
+                NoteBlock(0, 4, 0, 0) as Block,
+                NoteBlock(0, 1, 1, 0) as Block,
+                NoteBlock(3, 0) as Block,
+                NoteBlock(0, 6, 1, 0) as Block,
+                NoteBlock(0, 5, 1, 0) as Block,
+                NoteBlock(3, 1) as Block,
+                NoteBlock(0, 6, 1, 0) as Block,
+                NoteBlock(0, 1, 1, 0) as Block,
+                NoteBlock(3, 2) as Block,
+                NoteBlock(0, 6, 1, 0) as Block,
+                NoteBlock(0, 1, 1, 0) as Block,
+                NoteBlock(3, 3) as Block
             )
         )
         profileList.add(item)
         item = Profile(
             "Naman", Arrays.asList(
-                Arrays.asList(NoteBlock(0, 4, 0, 0)),
-                Arrays.asList(NoteBlock(0, 1, 1, 0)),
-                Arrays.asList(NoteBlock(3, 0)),
-                Arrays.asList(NoteBlock(0, 6, 1, 0)),
-                Arrays.asList(NoteBlock(0, 5, 1, 0)),
-                Arrays.asList(NoteBlock(3, 1)),
-                Arrays.asList(NoteBlock(0, 6, 1, 0)),
-                Arrays.asList(NoteBlock(0, 1, 1, 0)),
-                Arrays.asList(NoteBlock(3, 2)),
-                Arrays.asList(NoteBlock(0, 6, 1, 0)),
-                Arrays.asList(NoteBlock(0, 1, 1, 0)),
-                Arrays.asList(NoteBlock(3, 3))
+                NoteBlock(0, 4, 0, 0) as Block,
+                NoteBlock(0, 1, 1, 0) as Block,
+                NoteBlock(3, 0) as Block,
+                NoteBlock(0, 6, 1, 0) as Block,
+                NoteBlock(0, 5, 1, 0) as Block,
+                NoteBlock(3, 1) as Block,
+                NoteBlock(0, 6, 1, 0) as Block,
+                NoteBlock(0, 1, 1, 0) as Block,
+                NoteBlock(3, 2) as Block,
+                NoteBlock(0, 6, 1, 0) as Block,
+                NoteBlock(0, 1, 1, 0) as Block,
+                NoteBlock(3, 3) as Block
             )
         )
         profileList.add(item)

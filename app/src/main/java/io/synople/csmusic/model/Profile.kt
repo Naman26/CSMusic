@@ -1,3 +1,3 @@
 package io.synople.csmusic.model
 
-data class Profile(var studentName: String, var music: MutableList<MutableList<NoteBlock>>)
+data class Profile(var name: String, var music: MutableList<Block>)
